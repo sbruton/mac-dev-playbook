@@ -6,6 +6,7 @@ cargo_installed_binaries:
   - bat
   - cargo-audit
   - cargo-auditable
+  - cargo-binutils
   - cargo-bloat
   - cargo-clone
   - cargo-deadlinks

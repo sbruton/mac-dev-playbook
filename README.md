@@ -82,6 +82,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 
 | Component Type | Component | Description |
 | --- | --- | --- |
+| Binary Utility | [`cargo-binutils`] | Rust-LLVM tooling |
 | Binary Utility | [`cargo-bloat`] | Executable size inspection |
 | Binary Utility | [`cargo-show-asm`] | Assembly and IR inspection |
 | Code Inspection | [`cargo-expand`] | Rust macro expansion |
@@ -206,6 +207,7 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [`asciinema`]: https://asciinema.org/
 [`atuin`]: https://atuin.sh/
 [`tmux`]: https://github.com/tmux/tmux/
+[`cargo-binutils`]: https://github.com/rust-embedded/cargo-binutils/
 [`cargo-bloat`]: https://github.com/RazrFalcon/cargo-bloat/
 [`cargo-show-asm`]: https://github.com/pacak/cargo-show-asm/
 [`cargo-expand`]: https://github.com/dtolnay/cargo-expand/
