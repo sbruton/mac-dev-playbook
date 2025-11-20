@@ -9,8 +9,8 @@ name: CI
       - '*.md'
     branches:
       - main
-    schedule:
-      - cron: "0 5 * * 4"
+  schedule:
+    - cron: "0 5 * * 4"
 
 jobs:
 
