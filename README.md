@@ -26,8 +26,10 @@ The tooling included is quite opinionated based on technologies I am currently u
 | Application Type | Application | Description |
 | --- | --- | --- |
 | CAD/CAM | [Autodesk Fusion] | 3D parametric modeling |
+| CAD/CAM | [Blender] | 3D creation suite |
 | CAD/CAM | [KiCad] | Electronics schematic capture and PCB design |
 | CAD/CAM | [OmniGraffle] | Diagraming tool for flowcharts, floor plans, layouts, etc |
+| CAD/CAM | [OpenSCAD] | Programmable 3D solid modeler |
 | CAD/CAM | [OrcaSlicer] | 3D model gcode path generation for FDM/FFF printers |
 | Communication | [Discord] | Community-based chat service |
 | Communication | [Slack] | Group-based chat service |
@@ -143,8 +145,10 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [Rust]: https://rust-lang.org
 [geerlingguy/mac-dev-playbook]: https://github.com/geerlingguy/mac-dev-playbook/
 [Autodesk Fusion]: https://www.autodesk.com/products/fusion-360/
+[Blender]: https://www.blender.org/
 [KiCad]: https://www.kicad.org/
 [OmniGraffle]: https://www.omnigroup.com/omnigraffle/
+[OpenSCAD]: https://openscad.org/
 [OrcaSlicer]: https://github.com/OrcaSlicer/OrcaSlicer/
 [Discord]: https://discord.com/
 [Slack]: https://slack.com/

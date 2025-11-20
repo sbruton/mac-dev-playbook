@@ -1,4 +1,4 @@
-# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir
+# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad
 
 cargo_installed_binaries:
   - alacritty
@@ -55,6 +55,7 @@ homebrew_cask_apps:
   - 1password
   - 1password-cli
   - autodesk-fusion
+  - blender
   - brave-browser
   - discord
   - docker
@@ -62,6 +63,7 @@ homebrew_cask_apps:
   - font-jetbrains-mono-nerd-font
   - kicad
   - omnigraffle
+  - openscad
   - orcaslicer
   - postman
   - protonvpn
