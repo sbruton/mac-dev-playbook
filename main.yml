@@ -13,5 +13,5 @@
       tags: ['always']
   
   roles:
-
-  tasks:
+    - role: geerlingguy.mac.homebrew
+      tags: ['homebrew']
