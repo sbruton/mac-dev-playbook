@@ -14,8 +14,9 @@ The tooling included is quite opinionated based on technologies I am currently u
   - [Command-Line Tools](#command-line-tools)
   - [Rust Components](#rust-components)
   - [Miscellaneous Items](#miscellaneous-items)
-- [Configuring a Remote Mac](#configuring-a-remote-mac)
-- [Configuring a Local Mac](#configuring-a-local-mac)
+- [Configuring a Mac](#configuring-a-mac)
+  - [Local Configuration](#local-configuration)
+  - [Remote Network Configuration](#remote-network-configuration)
 - [License and Attribution](#license-and-attribution)
 <!-- toc:end -->
 
@@ -52,6 +53,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | --- | --- | --- |
 | Cybersecurity | [`nmap`] | Network port scanner |
 | Cybersecurity | [`openssl`] | Cryptographic functions |
+| Development Util | [`elf2uf2`] | ELF to UF2 binary conversion |
 | Development Util | [`gh`] | GitHub CLI |
 | Development Util | [`git`] | Git Revision Control |
 | Development Util | [`just`] | Command runner; modern `make` replacement |
@@ -105,9 +107,31 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | --- | --- |
 | [JetBrains Mono Font] | Awesome coding font |
 
-## Configuring a Remote Mac
+## Configuring a Mac
 
-Upon a fresh install of macOS, complete the post-install wizard to setup your initial user and optionally connect the Mac to iCloud. Once the Mac is connected to the network, you can proceed with the remote playbook execution.
+### Local Configuration
+
+1. **Configure Pre-Requisites:**
+    ```sh
+    # Include Ansible and Homebrew Binaries in PATH
+    export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
+    # Upgrade PIP
+    sudo pip3 install --upgrade pip
+    # Install Ansible
+    pip3 install ansible
+    ```
+
+1. **Run Playbook:**
+    ```sh
+    git clone https://github.com/sbruton/mac-dev-playbook
+    cd mac-dev-playbook
+    ansible-galaxy install -r requirements.yml
+    ansible-playbook main.yml --ask-become-pass
+    ```
+
+### Remote Network Configuration
+
+Upon a fresh install of macOS, complete the post-install wizard to setup your initial user and optionally connect the Mac to iCloud. Once the Mac is connected to the network, you can proceed with running the playbook from another computer that has Ansible installed.
 
 1. **Pre-Configuration on Remote Mac:** Remote login (SSH) support must be enabled on the Mac to be configured with Ansible. Run the following commands to enable SSH and display the user and hostname information necessary to target the device from the Ansible host.
     
@@ -127,13 +151,6 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
     ./bin/remote.sh <hostname> <username>
     ```
 
-## Configuring a Local Mac
-
-> [!NOTE]
-> **TODO:** Add instructions on how to prepare a fresh macOS installation for running an Ansible playbook.
-
-> [!NOTE]
-> **TODO:** Add instructions on how to run the playbook against the local Mac.
 
 ## License and Attribution
 
@@ -165,6 +182,7 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [Firefox Developer Edition]: https://www.firefox.com/en-US/channel/desktop/developer/
 [`nmap`]: https://nmap.org/
 [`openssl`]: https://openssl.org/
+[`elf2uf2`]: https://github.com/JoNil/elf2uf2-rs/
 [`gh`]: https://cli.github.com/
 [`git`]: https://git-scm.com/
 [`just`]: https://github.com/casey/just/
@@ -172,6 +190,7 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [`mdbook`]: https://github.com/rust-lang/mdBook/
 [`twiggy`]: https://github.com/AlexEne/twiggy/
 [`lsusb`]: https://github.com/jlhonora/lsusb/
+[`openocd`]: https://openocd.org/
 [`nvim`]: https://neovim.io/
 [`bat`]: https://github.com/sharkdp/bat/
 [`difft`]: https://github.com/Wilfred/difftastic/

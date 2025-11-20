@@ -23,6 +23,7 @@ cargo_installed_binaries:
   - difftastic
   - dioxus-cli
   - du-dust
+  - elf2uf2-rs
   - eza
   - fblog
   - fd-find
@@ -58,6 +59,7 @@ homebrew_cask_apps:
   - autodesk-fusion
   - blender
   - brave-browser
+  - cirruslabs/cli/tart
   - discord
   - docker
   - firefox@developer-edition
@@ -69,6 +71,5 @@ homebrew_cask_apps:
   - postman
   - protonvpn
   - slack
-  - tart
   - visual-studio-code
   - zoom
