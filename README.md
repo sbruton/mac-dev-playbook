@@ -16,7 +16,7 @@ The tooling included is quite opinionated based on technologies I am currently u
   - [Miscellaneous Items](#miscellaneous-items)
 - [Configuring a Remote Mac](#configuring-a-remote-mac)
 - [Configuring a Local Mac](#configuring-a-local-mac)
-- [License & Attribution](#license-&-attribution)
+- [License and Attribution](#license-and-attribution)
 <!-- toc:end -->
 
 ## Playbook-Installed Software
@@ -131,7 +131,7 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
 > [!NOTE]
 > **TODO:** Add instructions on how to run the playbook against the local Mac.
 
-## License & Attribution
+## License and Attribution
 
 This project is distributed under the terms of the MIT License. See [`LICENSE`] for the full text.
 
