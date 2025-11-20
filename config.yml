@@ -29,6 +29,7 @@ cargo_installed_binaries:
   - mdbook
   - procs
   - ripgrep
+  - twiggy
   - watchexec-cli
 
 homebrew_installed_packages:
