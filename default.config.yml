@@ -4,7 +4,6 @@ cargo_installed_binaries:
   - alacritty
   - atuin
   - bat
-  - bottom
   - cargo-audit
   - cargo-auditable
   - cargo-bloat
@@ -25,12 +24,12 @@ cargo_installed_binaries:
   - cargo-update
   - difftastic
   - dioxus-cli
-  - dua-cli
   - du-dust
   - eza
   - fd-find
   - just
   - mdbook
+  - procs
   - ripgrep
   - watchexec-cli
 
@@ -38,6 +37,7 @@ homebrew_installed_packages:
   - asciinema
   - gh
   - git
+  - htop
   - lsusb
   - neovim
   - nmap
