@@ -21,7 +21,7 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
     hostname
     ```
 
-1. **Run Playbook:** A convienence script is provided that will run the Ansible playbook to configure the remote Mac using the target device's hostname and username. You will be prompted for the user's password.
+1. **Run Playbook:** A convenience script is provided that will run the Ansible playbook to configure the remote Mac using the target device's hostname and username. You will be prompted for the user's password.
     ```sh
     ./bin/remote.sh <hostname> <username>
     ```
