@@ -78,14 +78,14 @@ jobs:
         run: ansible-playbook main.yml --syntax-check
 
       - name: Test Playbook
-        run: ansible-playbook mail.yml
+        run: ansible-playbook main.yml
         env:
           ANSIBLE_FORCE_COLOR: '1'
 
       - name: Idempotence Check
         run: |
           idempotence=$(mktemp)
-          ansible-playbook mail.yml | tee ${idempotence}
+          ansible-playbook main.yml | tee ${idempotence}
           tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence Test: Pass' && exit 0) || (echo 'Idempotence Test: Fail' && exit 1)
         env:
           ANSIBLE_FORCE_COLOR: '1'
