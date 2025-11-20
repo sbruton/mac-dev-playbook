@@ -24,6 +24,7 @@ cargo_installed_binaries:
   - cargo-tarpaulin
   - cargo-update
   - difftastic
+  - dioxus-cli
   - dua-cli
   - du-dust
   - eza
