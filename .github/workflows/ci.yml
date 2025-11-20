@@ -48,7 +48,7 @@ jobs:
 
       - name: Uninstall GitHub's Built-In Homebrew
         run: |
-          curl -sLO https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh
+          curl -sLO https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh
           chmod +x ./uninstall.sh
           sudo ./uninstall.sh --force
           sudo rm -rf /usr/local/Homebrew
