@@ -2,7 +2,7 @@
 
 [![CI][badge-gh-actions]][link-gh-actions]
 
-<!-- cspell:ignore nmap, lsusb, nvim, difft, fblog, procs, deadlinks, systemsetup, setremotelogin -->
+<!-- cspell:ignore nmap, lsusb, nvim, difft, fblog, procs, deadlinks, systemsetup, setremotelogin, openocd -->
 
 This repository contains an Ansible playbook and supporting scripts to configure macOS for software and hardware development. It covers end-to-end product development–ideation, design, planning, software/hardware development, modeling, manufacturing, and testing.
 
@@ -59,6 +59,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | Development Util | [`mdbook`] | Markdown-based static-book generator; typically used for docs |
 | Development Util | [`twiggy`] | WASM binary size inspection |
 | Device Management | [`lsusb`] | USB device information |
+| Device Management | [`openocd`] | On-chip debugger serial interface |
 | Editor | [`nvim`] | Neovim `vim`-based editor |
 | File Inspection | [`bat`] | Syntax-highlighting, git-integrated, code-friendly `cat` replacement |
 | File Inspection | [`difft`] | Syntax-aware diff tool |
