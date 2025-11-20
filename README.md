@@ -38,6 +38,7 @@ The tooling included is quite opinionated based on technologies I am currently u
 | Secrets Management | [1Password] | GUI and CLI interfaces to 1Password |
 | Terminal Emulator | [Alacritty] | Fast, modern hardware-accelerated terminal emulator |
 | Virtualization | [Docker] | Container-based virtualization |
+| Virtualization | [Tart] | Apple silicon virtualization |
 | Web Browser | [Brave] | Privacy-first, security-aware, chromium-based browser |
 | Web Browser | [Firefox Developer Edition] | Another browser with privacy and security focus |
 
@@ -154,6 +155,7 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [1Password]: https://1password.com/
 [Alacritty]: https://github.com/alacritty/alacritty/
 [Docker]: https://docker.com/
+[Tart]: https://github.com/cirruslabs/tart/
 [Brave]: https://brave.com/
 [Firefox Developer Edition]: https://www.firefox.com/en-US/channel/desktop/developer/
 [`nmap`]: https://nmap.org/

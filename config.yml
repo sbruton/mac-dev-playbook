@@ -1,4 +1,4 @@
-# cspell:ignore deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir
+# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir
 
 cargo_installed_binaries:
   - alacritty
@@ -47,7 +47,7 @@ homebrew_installed_packages:
   - xz
 
 homebrew_taps:
-  - "messense/macos-cross-toolchains"
+  - "cirruslabs/cli"
 
 homebrew_cask_appdir: /Applications
 
@@ -66,4 +66,5 @@ homebrew_cask_apps:
   - postman
   - protonvpn
   - slack
+  - tart
   - visual-studio-code
