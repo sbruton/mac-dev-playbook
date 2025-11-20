@@ -1,0 +1,91 @@
+---
+name: CI
+'on':
+  pull_request:
+    paths-ignore:
+      - '*.md'
+  push:
+    paths-ignore:
+      - '*.md'
+    branches:
+      - main
+    schedule:
+      - cron: "0 5 * * 4"
+
+jobs:
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Python 3
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: Install Test Dependencies
+        run: pip3 install yamllint ansible ansible-lint
+
+      - name: Lint Playbook
+        run: |
+          yamllint .
+          ansible-lint
+
+  integration:
+    name: integration
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - macos-26
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v6
+
+      - name: Uninstall GitHub's Built-In Homebrew
+        run: |
+          curl -sLO https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh
+          chmod +x ./uninstall.sh
+          sudo ./uninstall.sh --force
+          sudo rm -rf /usr/local/Homebrew
+          sudo rm -rf /usr/local/Caskroom
+          sudo rm -rf /usr/local/bin/brew
+          sudo rm -rf /opt/homebrew
+
+      - name: Uninstall GitHub's Built-In Browsers
+        run: |
+          sudo rm -rf /Applications/Firefox.app
+          sudo rm -rf /Applications/Google\ Chrome.app
+          sudo rm -rf /usr/loca/bin/firefox
+
+      - name: Install Test Dependencies
+        run: |
+          sudo pip3 install --upgrade pip
+          sudo pip3 install ansible
+
+      - name: Setup Test Environment
+        run: |
+          cp tests/ansible.cfg ./ansible.cfg
+          cp tests/inventory ./inventory
+          cp tests/config.yml ./config.yml
+          ansible-galaxy install -r requirements.yml
+
+      - name: Test Playbook Syntax
+        run: ansible-playbook main.yml --syntax-check
+
+      - name: Test Playbook
+        run: ansible-playbook mail.yml
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+
+      - name: Idempotence Check
+        run: |
+          idempotence=$(mktemp)
+          ansible-playbook mail.yml | tee ${idempotence}
+          tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence Test: Pass' && exit 0) || (echo 'Idempotence Test: Fail' && exit 1)
+        env:
+          ANSIBLE_FORCE_COLOR: '1'

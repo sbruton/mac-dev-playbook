@@ -1,0 +1,17 @@
+---
+- name: Configure Host
+  hosts: all
+
+  vars_files:
+    - default.config.yml
+
+  pre_tasks:
+    - name: Include Playbook Configuration
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ['always']
+  
+  roles:
+
+  tasks:

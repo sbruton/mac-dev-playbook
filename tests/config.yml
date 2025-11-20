@@ -1,0 +1,6 @@
+---
+homebrew_installed_packages:
+  - zsh-completions
+
+homebrew_cask_apps:
+  - firefox@developer-edition

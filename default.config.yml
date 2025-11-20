@@ -1,0 +1,69 @@
+---
+
+cargo_installed_binaries:
+  - alacritty
+  - atuin
+  - bat
+  - bottom
+  - cargo-audit
+  - cargo-auditable
+  - cargo-bloat
+  - cargo-clone
+  - cargo-deadlinks
+  - cargo-deb
+  - cargo-deny
+  - cargo-diet
+  - cargo-edit
+  - cargo-expand
+  - cargo-generate
+  - cargo-grammarly
+  - cargo-lipo
+  - cargo-next
+  - cargo-rpm
+  - cargo-show-asm
+  - cargo-tarpaulin
+  - cargo-update
+  - difftastic
+  - dua-cli
+  - du-dust
+  - eza
+  - fd-find
+  - just
+  - mdbook
+  - ripgrep
+  - watchexec-cli
+
+homebrew_installed_packages:
+  - asciinema
+  - gh
+  - git
+  - lsusb
+  - neovim
+  - nmap
+  - openssl
+  - rustup
+  - tmux
+  - xz
+  - zsh-completions
+
+homebrew_taps:
+  - 'messense/macos-cross-toolchains'
+
+homebrew_cask_appdir: /Applications
+
+homebrew_cask_apps:
+  - 1password
+  - 1password-cli
+  - autodesk-fusion
+  - brave-browser
+  - discord
+  - docker
+  - firefox@developer-edition
+  - font-jetbrains-mono-nerd-font
+  - kicad
+  - omnigraffle
+  - orcaslicer
+  - postman
+  - protonvpn
+  - slack
+  - visual-studio-code
