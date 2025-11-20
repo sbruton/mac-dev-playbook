@@ -28,8 +28,8 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
 
 ## Configuring Local Mac
 
-> [!NOTE] TODO
-> Add instructions on how to prepare a fresh macOS installation for running an Ansible playbook.
+> [!NOTE]
+> **TODO:** Add instructions on how to prepare a fresh macOS installation for running an Ansible playbook.
 
 > [!NOTE]
 > **TODO:** Add instructions on how to run the playbook against the local Mac.
