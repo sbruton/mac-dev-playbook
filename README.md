@@ -1,8 +1,95 @@
-# Ansible Playbook for Rust-Focused Development on macOS
+# Ansible Playbook for Development on macOS
 
 [![CI][badge-gh-actions]][link-gh-actions]
 
-This repository contains an Ansible playbook and supporting scripts to configure macOS for software development. It is weighted towards [Rust] development targeting standard operating systems, WASM-based web development, mobile and embedded devices. This playbook borrows from the work done by Jeff Geerling and others in [geerlingguy/mac-dev-playbook].
+This repository contains an Ansible playbook and supporting scripts to configure macOS for software and hardware development. It covers end-to-end product development–ideation, design, planning, software/hardware development, modeling, manufacturing, and testing.
+
+The tooling included is quite opinionated based on technologies I am currently using personally and professionally. If you are into Rust-based software development, making things (electronics, 3D printing, machining), or cybersecurity then you may find this playbook useful as a starting point to fork for your own Mac configuration.
+
+This playbook borrows from the work done by Jeff Geerling and others in [geerlingguy/mac-dev-playbook].
+
+## Playbook-Installed Software
+
+### Applications
+
+| Applicaiton Type | Application | Description |
+| --- | --- | --- |
+| CAD/CAM | [Autodesk Fusion] | 3D parametric modeling |
+| CAD/CAM | [KiCad] | Electronics schematic capture and PCB design |
+| CAD/CAM | [OmniGraffle] | Diagraming tool for flowcharts, floorplans, layouts, etc |
+| CAD/CAM | [OrcaSlicer] | 3D model gcode path generation for FDM/FFF printers |
+| Communication | [Discord] | Community-based chat service |
+| Communication | [Slack] | Group-based chat service |
+| Communication | [Zoom] | Video conferencing |
+| Development | [Postman] | HTTP API design, testing, and emulation |
+| Development | [Visual Studio Code] | Extensibe, language-agnostic IDE |
+| Networking | [Proton VPN] | VPN service client |
+| Secrets Management | [1Password] | GUI and CLI interfaces to 1Password |
+| Terminal Emulator | [Alacritty] | Fast, modern hardware-accellerated terminal emulator |
+| Virtualization | [Docker] | Container-based virtualization |
+| Web Browser | [Brave] | Privacy-first, security-aware, chromium-based browser |
+| Web Browser | [Firefox Developer Edition] | Another browser with privacy and security focus |
+
+### Command-Line Tools
+
+This playbook includes an opinoninated mix of modern and traditional Linux/Unix command line utilities for software development, general systems operation, and cybersecurity.
+
+| Tool Type | Command | Description |
+| --- | --- | --- |
+| Cybersecurity | [`nmap`] | Network port scanner |
+| Cybersecurity | [`openssl`] | Cryptographic functions |
+| Development Util | [`gh`] | GitHub CLI |
+| Development Util | [`git`] | Git Revision Control |
+| Development Util | [`just`] | Command runner; modern `make` replacement |
+| Development Util | [`mdbook`] | Markdown-based static-book generator; typically used for docs |
+| Device Management | [`lsusb`] | USB device information |
+| Editor | [`nvim`] | Neovim `vim`-based editor |
+| File Inspection | [`bat`] | Syntax-highlighting, git-integrated, code-friendly `cat` replacement |
+| File Inspection | [`difft`] | Syntax-aware diff tool |
+| File Inspection | [`fblog`] | JSON log file viewer |
+| File Inspection | [`ripgrep`] | Regular expression parser; modern `grep` replacement |
+| File System Util | [`dust`] | Disk usage information; modern `du` replacement |
+| File System Util | [`eza`] | File listing; modern `ls` replacement |
+| File System Util | [`fd`] | File finder; modern `find` replacement |
+| File System Util | [`xz`] | File compression |
+| File System Util | [`watchexec`] | Run commands when files change |
+| Process Management | [`htop`] | Interactive process and resource monitor |
+| Process Management | [`procs`] | Process information; modern `ps` replacement |
+| Shell Util | [`asciinema`] | Terminal capture and playback |
+| Shell Util | [`atuin`] | Shell history search and sync |
+| Shell Util | [`tmux`] | Multi-terminal manager |
+
+### Rust Components
+
+| Component Type | Component | Description |
+| --- | --- | --- |
+| Binary Utility | [`cargo-bloat`] |
+| Binary Utility | [`cargo-lipo`] |
+| Binary Utility | [`cargo-show-asm`] |
+| Code Inspection | [`cargo-expand`] |
+| Code Inspection | [`cargo-tarpaulin`] |
+| Compiler | [`rustc`] _stable_ |
+| Compiler | [`rustc`] _nightly_ |
+| Dependency Management | [`cargo-audit`] |
+| Dependency Management | [`cargo-auditable`] |
+| Dependency Management | [`cargo-clone`] |
+| Dependency Management | [`cargo-deny`] |
+| Dependency Management | [`cargo-diet`] |
+| Documentation Utility | [`cargo-deadlinks`] |
+| Documentation Utility | [`cargo-grammarly`] |
+| Package Management | [`cargo-deb`] |
+| Package Management | [`cargo-edit`] |
+| Package Management | [`cargo-generate`] |
+| Package Management | [`cargo-next`] |
+| Package Management | [`cargo-rpm`] |
+| Package Management | [`cargo-update`] |
+| Package Management | [`dioxus-cli`] |
+
+### Miscellaneous Items
+| Item | Description |
+| --- | --- |
+| [JetBrains Mono Font] | Awesome coding font |
+| [ZSH Completions] | Shell command completion hints |
 
 ## Configuring Remote Mac
 
@@ -36,5 +123,45 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
 
 [badge-gh-actions]: https://github.com/sbruton/mac-dev-playbook/actions/workflows/ci.yml/badge.svg
 [link-gh-actions]: https://github.com/sbruton/mac-dev-playbook/actions/workflows/ci.yml
+
 [Rust]: https://rust-lang.org
+
 [geerlingguy/mac-dev-playbook]: https://github.com/geerlingguy/mac-dev-playbook/
+
+[Autodesk Fusion]: https://www.autodesk.com/products/fusion-360/
+[KiCad]: https://www.kicad.org/
+[OmniGraffle]: https://www.omnigroup.com/omnigraffle/
+[OrcaSlicer]: https://github.com/OrcaSlicer/OrcaSlicer/
+[Discord]: https://discord.com/
+[Slack]: https://slack.com/
+[Zoom]: https://zoom.com/
+[Postman]: https://www.postman.com/
+[Visual Studio Code]: https://code.visualstudio.com/
+[Proton VPN]: https://protonvpn.com/
+[1Password]: https://1password.com/
+[Alacritty]: https://github.com/alacritty/alacritty/
+[Docker]: https://docker.com/
+[Brave]: https://brave.com/
+[Firefox Developer Edition]: https://www.firefox.com/en-US/channel/desktop/developer/
+[`nmap`]: https://nmap.org/
+[`openssl`]: https://openssl.org/
+[`gh`]: https://cli.github.com/
+[`git`]: https://git-scm.com/
+[`just`]: https://github.com/casey/just/
+[`mdbook`]: https://github.com/rust-lang/mdBook/
+[`lsusb`]: https://github.com/jlhonora/lsusb/
+[`nvim`]: https://neovim.io/
+[`bat`]: https://github.com/sharkdp/bat/
+[`difft`]: https://github.com/Wilfred/difftastic/
+[`fblog`]: https://github.com/brocode/fblog/
+[`ripgrep`]: https://github.com/BurntSushi/ripgrep/
+[`htop`]: https://htop.dev/
+[`dust`]: https://github.com/bootandy/dust/
+[`eza`]: https://eza.rocks/
+[`fd`]: https://github.com/sharkdp/fd/
+[`xz`]: https://github.com/tukaani-project/xz/
+[`watchexec`]: https://github.com/watchexec/watchexec/
+[`procs`]: https://github.com/dalance/procs/
+[`asciinema`]: https://asciinema.org/
+[`atuin`]: https://atuin.sh/
+[`tmux`]: https://github.com/tmux/tmux/
