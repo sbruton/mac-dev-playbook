@@ -9,5 +9,3 @@ dictionaries:
     - dictionary
 ignorePaths:
     - '/dictionary.txt'
-
-
