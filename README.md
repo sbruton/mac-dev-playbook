@@ -4,9 +4,18 @@
 
 This repository contains an Ansible playbook and supporting scripts to configure macOS for software and hardware development. It covers end-to-end product development–ideation, design, planning, software/hardware development, modeling, manufacturing, and testing.
 
-The tooling included is quite opinionated based on technologies I am currently using personally and professionally. If you are into Rust-based software development, making things (electronics, 3D printing, machining), or cybersecurity then you may find this playbook useful as a starting point to fork for your own Mac configuration.
+The tooling included is quite opinionated based on technologies I am currently using personally and professionally. If you are into Rust-based software development, making things (electronics, 3D printing, machining), or cybersecurity then you may find this playbook useful as a starting point for your own Mac configuration.
 
-This playbook borrows from the work done by Jeff Geerling and others in [geerlingguy/mac-dev-playbook].
+<!-- toc:start -->
+- [Playbook-Installed Software](#playbook-installed-software)
+  - [Applications](#applications)
+  - [Command-Line Tools](#command-line-tools)
+  - [Rust Components](#rust-components)
+  - [Miscellaneous Items](#miscellaneous-items)
+- [Configuring a Remote Mac](#configuring-a-remote-mac)
+- [Configuring a Local Mac](#configuring-a-local-mac)
+- [License & Attribution](#license-&-attribution)
+<!-- toc:end -->
 
 ## Playbook-Installed Software
 
@@ -41,7 +50,9 @@ This playbook includes an opinoninated mix of modern and traditional Linux/Unix 
 | Development Util | [`gh`] | GitHub CLI |
 | Development Util | [`git`] | Git Revision Control |
 | Development Util | [`just`] | Command runner; modern `make` replacement |
+| Development Util | [`md-toc`] | Markdown table-of-contents generator |
 | Development Util | [`mdbook`] | Markdown-based static-book generator; typically used for docs |
+| Development Util | [`twiggy`] | WASM binary size inspection |
 | Device Management | [`lsusb`] | USB device information |
 | Editor | [`nvim`] | Neovim `vim`-based editor |
 | File Inspection | [`bat`] | Syntax-highlighting, git-integrated, code-friendly `cat` replacement |
@@ -63,35 +74,32 @@ This playbook includes an opinoninated mix of modern and traditional Linux/Unix 
 
 | Component Type | Component | Description |
 | --- | --- | --- |
-| Binary Utility | [`cargo-bloat`] |
-| Binary Utility | [`cargo-lipo`] |
-| Binary Utility | [`cargo-show-asm`] |
-| Code Inspection | [`cargo-expand`] |
-| Code Inspection | [`cargo-tarpaulin`] |
-| Compiler | [`rustc`] _stable_ |
-| Compiler | [`rustc`] _nightly_ |
-| Dependency Management | [`cargo-audit`] |
-| Dependency Management | [`cargo-auditable`] |
-| Dependency Management | [`cargo-clone`] |
-| Dependency Management | [`cargo-deny`] |
-| Dependency Management | [`cargo-diet`] |
-| Documentation Utility | [`cargo-deadlinks`] |
-| Documentation Utility | [`cargo-grammarly`] |
-| Package Management | [`cargo-deb`] |
-| Package Management | [`cargo-edit`] |
-| Package Management | [`cargo-generate`] |
-| Package Management | [`cargo-next`] |
-| Package Management | [`cargo-rpm`] |
-| Package Management | [`cargo-update`] |
-| Package Management | [`dioxus-cli`] |
+| Binary Utility | [`cargo-bloat`] | Executable size inspection |
+| Binary Utility | [`cargo-show-asm`] | Assembly and IR inspection |
+| Code Inspection | [`cargo-expand`] | Rust macro expansion |
+| Code Inspection | [`cargo-tarpaulin`] | Rust code coverage |
+| Dependency Management | [`cargo-audit`] | Dependency vulnerability check |
+| Dependency Management | [`cargo-auditable`] | Rust binary dependency audit |
+| Dependency Management | [`cargo-clone`] | Cargo crate source code fetch |
+| Dependency Management | [`cargo-deny`] | Cargo dependency rules |
+| Documentation Utility | [`cargo-deadlinks`] | Rust documenation link checker |
+| Package Management | [`cargo-deb`] | Debian package generator for Rust projects |
+| Package Management | [`cargo-diet`] | Cargo crate cruft detection |
+| Package Management | [`cargo-edit`] | CLI cargo dependency management |
+| Package Management | [`cargo-generate`] | Rust project template generator |
+| Package Management | [`cargo-next`] | CLI cargo crate version management |
+| Package Management | [`cargo-rpm`] | RPM package generator for Rust projects |
+| Package Management | [`cargo-update`] | Updates binaries installed via Cargo |
+| Package Management | [`dioxus-cli`] | Dioxus application generation, runner, and bundler |
+| Toolchain | [Rust] Stable | Latest stable Rust compiler, standard lib, and tools |
+| Toolchain | [Rust] Nightly | Most recent Rust compiler, standard lib, and tools | 
 
 ### Miscellaneous Items
 | Item | Description |
 | --- | --- |
 | [JetBrains Mono Font] | Awesome coding font |
-| [ZSH Completions] | Shell command completion hints |
 
-## Configuring Remote Mac
+## Configuring a Remote Mac
 
 Upon a fresh install of macOS, complete the post-install wizard to setup your initial user and optionally connect the Mac to iCloud. Once the Mac is connected to the network, you can proceed with the remote playbook execution.
 
@@ -113,7 +121,7 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
     ./bin/remote.sh <hostname> <username>
     ```
 
-## Configuring Local Mac
+## Configuring a Local Mac
 
 > [!NOTE]
 > **TODO:** Add instructions on how to prepare a fresh macOS installation for running an Ansible playbook.
@@ -121,13 +129,16 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
 > [!NOTE]
 > **TODO:** Add instructions on how to run the playbook against the local Mac.
 
+## License & Attribution
+
+This project is distributed under the terms of the MIT License. See [`LICENSE`] for the full text.
+
+This playbook borrows from the work done by Jeff Geerling and others in [geerlingguy/mac-dev-playbook].
+
 [badge-gh-actions]: https://github.com/sbruton/mac-dev-playbook/actions/workflows/ci.yml/badge.svg
 [link-gh-actions]: https://github.com/sbruton/mac-dev-playbook/actions/workflows/ci.yml
-
 [Rust]: https://rust-lang.org
-
 [geerlingguy/mac-dev-playbook]: https://github.com/geerlingguy/mac-dev-playbook/
-
 [Autodesk Fusion]: https://www.autodesk.com/products/fusion-360/
 [KiCad]: https://www.kicad.org/
 [OmniGraffle]: https://www.omnigroup.com/omnigraffle/
@@ -148,7 +159,9 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
 [`gh`]: https://cli.github.com/
 [`git`]: https://git-scm.com/
 [`just`]: https://github.com/casey/just/
+[`md-toc`]: https://github.com/pbzweihander/markdown-toc/
 [`mdbook`]: https://github.com/rust-lang/mdBook/
+[`twiggy`]: https://github.com/AlexEne/twiggy/
 [`lsusb`]: https://github.com/jlhonora/lsusb/
 [`nvim`]: https://neovim.io/
 [`bat`]: https://github.com/sharkdp/bat/
@@ -165,3 +178,23 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
 [`asciinema`]: https://asciinema.org/
 [`atuin`]: https://atuin.sh/
 [`tmux`]: https://github.com/tmux/tmux/
+[`cargo-bloat`]: https://github.com/RazrFalcon/cargo-bloat/
+[`cargo-show-asm`]: https://github.com/pacak/cargo-show-asm/
+[`cargo-expand`]: https://github.com/dtolnay/cargo-expand/
+[`cargo-tarpaulin`]: https://github.com/xd009642/tarpaulin/
+[`rustc`]: https://rust-lang.org/
+[`cargo-audit`]: https://github.com/rustsec/rustsec/
+[`cargo-auditable`]: https://github.com/rust-secure-code/cargo-auditable/
+[`cargo-clone`]: https://github.com/JanLikar/cargo-clone/
+[`cargo-deny`]: https://github.com/EmbarkStudios/cargo-deny/
+[`cargo-deadlinks`]: https://github.com/deadlinks/cargo-deadlinks/
+[`cargo-deb`]: https://github.com/kornelski/cargo-deb/
+[`cargo-diet`]: https://github.com/the-lean-crate/cargo-diet/
+[`cargo-edit`]: https://github.com/killercup/cargo-edit/
+[`cargo-generate`]: https://github.com/cargo-generate/cargo-generate/
+[`cargo-next`]: https://github.com/conventional-commits-rs/cargo-next/
+[`cargo-rpm`]: https://github.com/iqlusioninc/cargo-rpm/
+[`cargo-update`]: https://github.com/nabijaczleweli/cargo-update/
+[`dioxus-cli`]: https://dioxuslabs.com/
+[JetBrains Mono Font]: https://www.jetbrains.com/lp/mono/
+[`LICENSE`]: ./LICENSE

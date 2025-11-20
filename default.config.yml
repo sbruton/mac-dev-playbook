@@ -15,8 +15,6 @@ cargo_installed_binaries:
   - cargo-edit
   - cargo-expand
   - cargo-generate
-  - cargo-grammarly
-  - cargo-lipo
   - cargo-next
   - cargo-rpm
   - cargo-show-asm
@@ -45,7 +43,6 @@ homebrew_installed_packages:
   - rustup
   - tmux
   - xz
-  - zsh-completions
 
 homebrew_taps:
   - "messense/macos-cross-toolchains"
