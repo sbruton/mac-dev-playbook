@@ -1,4 +1,4 @@
-# cspell:ignore deadlinks, difftastic, procs, lsusb, nmap, rustup, messense, appdir
+# cspell:ignore deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir
 
 cargo_installed_binaries:
   - alacritty
@@ -24,6 +24,7 @@ cargo_installed_binaries:
   - dioxus-cli
   - du-dust
   - eza
+  - fblog
   - fd-find
   - just
   - mdbook
