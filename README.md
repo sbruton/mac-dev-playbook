@@ -94,7 +94,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | Package Management | [`cargo-update`] | Updates binaries installed via Cargo |
 | Package Management | [`dioxus-cli`] | Dioxus application generation, runner, and bundler |
 | Toolchain | [Rust] Stable | Latest stable Rust compiler, standard lib, and tools |
-| Toolchain | [Rust] Nightly | Most recent Rust compiler, standard lib, and tools | 
+| Toolchain | [Rust] Nightly | Most recent Rust compiler, standard lib, and tools |
 
 ### Miscellaneous Items
 | Item | Description |
