@@ -1,0 +1,14 @@
+asciinema
+atuin
+Bruton
+Dioxus
+gcode
+Geerling
+geerlingguy
+kicad
+mdbook
+mktemp
+omnigraffle
+orcaslicer
+protonvpn
+watchexec

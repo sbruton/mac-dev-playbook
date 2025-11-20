@@ -2,6 +2,8 @@
 
 [![CI][badge-gh-actions]][link-gh-actions]
 
+<!-- cspell:ignore nmap, lsusb, nvim, difft, fblog, procs, deadlinks, systemsetup, setremotelogin -->
+
 This repository contains an Ansible playbook and supporting scripts to configure macOS for software and hardware development. It covers end-to-end product development–ideation, design, planning, software/hardware development, modeling, manufacturing, and testing.
 
 The tooling included is quite opinionated based on technologies I am currently using personally and professionally. If you are into Rust-based software development, making things (electronics, 3D printing, machining), or cybersecurity then you may find this playbook useful as a starting point for your own Mac configuration.
@@ -21,27 +23,27 @@ The tooling included is quite opinionated based on technologies I am currently u
 
 ### Applications
 
-| Applicaiton Type | Application | Description |
+| Application Type | Application | Description |
 | --- | --- | --- |
 | CAD/CAM | [Autodesk Fusion] | 3D parametric modeling |
 | CAD/CAM | [KiCad] | Electronics schematic capture and PCB design |
-| CAD/CAM | [OmniGraffle] | Diagraming tool for flowcharts, floorplans, layouts, etc |
+| CAD/CAM | [OmniGraffle] | Diagraming tool for flowcharts, floor plans, layouts, etc |
 | CAD/CAM | [OrcaSlicer] | 3D model gcode path generation for FDM/FFF printers |
 | Communication | [Discord] | Community-based chat service |
 | Communication | [Slack] | Group-based chat service |
 | Communication | [Zoom] | Video conferencing |
 | Development | [Postman] | HTTP API design, testing, and emulation |
-| Development | [Visual Studio Code] | Extensibe, language-agnostic IDE |
+| Development | [Visual Studio Code] | Extensible, language-agnostic IDE |
 | Networking | [Proton VPN] | VPN service client |
 | Secrets Management | [1Password] | GUI and CLI interfaces to 1Password |
-| Terminal Emulator | [Alacritty] | Fast, modern hardware-accellerated terminal emulator |
+| Terminal Emulator | [Alacritty] | Fast, modern hardware-accelerated terminal emulator |
 | Virtualization | [Docker] | Container-based virtualization |
 | Web Browser | [Brave] | Privacy-first, security-aware, chromium-based browser |
 | Web Browser | [Firefox Developer Edition] | Another browser with privacy and security focus |
 
 ### Command-Line Tools
 
-This playbook includes an opinoninated mix of modern and traditional Linux/Unix command line utilities for software development, general systems operation, and cybersecurity.
+This playbook includes an opinionated mix of modern and traditional Linux/Unix command line utilities for software development, general systems operation, and cybersecurity.
 
 | Tool Type | Command | Description |
 | --- | --- | --- |
@@ -82,7 +84,7 @@ This playbook includes an opinoninated mix of modern and traditional Linux/Unix 
 | Dependency Management | [`cargo-auditable`] | Rust binary dependency audit |
 | Dependency Management | [`cargo-clone`] | Cargo crate source code fetch |
 | Dependency Management | [`cargo-deny`] | Cargo dependency rules |
-| Documentation Utility | [`cargo-deadlinks`] | Rust documenation link checker |
+| Documentation Utility | [`cargo-deadlinks`] | Rust documentation link checker |
 | Package Management | [`cargo-deb`] | Debian package generator for Rust projects |
 | Package Management | [`cargo-diet`] | Cargo crate cruft detection |
 | Package Management | [`cargo-edit`] | CLI cargo dependency management |

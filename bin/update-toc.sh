@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+# cspell:ignore getline, gsub, IGNORECASE, tocfile
+
 set -euo pipefail
 
 FILE="${1:-README.md}"

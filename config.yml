@@ -1,4 +1,4 @@
----
+# cspell:ignore deadlinks, difftastic, procs, lsusb, nmap, rustup, messense, appdir
 
 cargo_installed_binaries:
   - alacritty
