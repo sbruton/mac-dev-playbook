@@ -9,7 +9,7 @@
       ansible.builtin.command: which duti
       changed_when: false
 
-    - name: Set {{ terminal_bundle_id }} as default handler for extension {{ terminal_extension }}
+    - name: Set default handler for extension {{ terminal_extension }}
       ansible.builtin.shell: |
         set -euo pipefail
         current="$(duti -x {{ terminal_extension | quote }} | awk 'NR==3 {print $0}' || true)"
