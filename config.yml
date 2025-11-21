@@ -1,5 +1,4 @@
 # cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad
-homebrew_upgrade_all_packages: true
 
 cargo_installed_binaries:
   - alacritty
@@ -36,8 +35,11 @@ cargo_installed_binaries:
   - twiggy
   - watchexec-cli
 
+homebrew_upgrade_all_packages: true
+
 homebrew_installed_packages:
   - asciinema
+  - cirruslabs/cli/tart
   - gh
   - git
   - htop
@@ -54,8 +56,6 @@ homebrew_taps:
   - { name: cirruslabs/cli, url: 'https://github.com/cirruslabs/homebrew-cli' }
 
 homebrew_cask_appdir: /Applications
-
-homebrew_cask_accept_external_apps: true
 
 homebrew_cask_apps:
   - 1password
@@ -74,6 +74,5 @@ homebrew_cask_apps:
   - postman
   - protonvpn
   - slack
-  - tart
   - visual-studio-code
   - zoom
