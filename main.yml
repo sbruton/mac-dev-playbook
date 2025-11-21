@@ -13,7 +13,10 @@
       tags: ["homebrew"]
 
   tasks:
-    - import_tasks: tasks/rust.yml
+    - name: Include Rust automation tasks
+      ansible.builtin.import_tasks: tasks/rust.yml
       tags: ['rust']
-    - import_tasks: tasks/macos.yml
+
+    - name: Include macOS defaults tasks
+      ansible.builtin.import_tasks: tasks/macos.yml
       tags: ["macos"]

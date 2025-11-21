@@ -38,6 +38,7 @@ cargo_installed_binaries:
 homebrew_upgrade_all_packages: true
 
 homebrew_installed_packages:
+  - ansible-lint
   - asciinema
   - cirruslabs/cli/tart
   - duti

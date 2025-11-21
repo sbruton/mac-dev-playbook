@@ -54,6 +54,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | --- | --- | --- |
 | Cybersecurity | [`nmap`] | Network port scanner |
 | Cybersecurity | [`openssl`] | Cryptographic functions |
+| Development Util | [`ansible-lint`] | Ansible configuration correctness evaluation |
 | Development Util | [`elf2uf2`] | ELF to UF2 binary conversion |
 | Development Util | [`gh`] | GitHub CLI |
 | Development Util | [`git`] | Git Revision Control |
@@ -189,6 +190,7 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [Firefox Developer Edition]: https://www.firefox.com/en-US/channel/desktop/developer/
 [`nmap`]: https://nmap.org/
 [`openssl`]: https://openssl.org/
+[`ansible-lint`]: https://docs.ansible.com/projects/lint/
 [`elf2uf2`]: https://github.com/JoNil/elf2uf2-rs/
 [`gh`]: https://cli.github.com/
 [`git`]: https://git-scm.com/

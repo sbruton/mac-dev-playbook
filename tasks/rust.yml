@@ -1,25 +1,70 @@
 - name: Install Rust Toolchains
+  vars:
+    cargo_bin_path: "{{ ansible_env.HOME }}/.cargo/bin/cargo"
+    rustup_bin_path: "{{ homebrew_brew_bin_path }}/rustup"
   block:
     - name: Check if cargo is installed
       ansible.builtin.command: which cargo
       register: cargo_check
       ignore_errors: true
       changed_when: false
+
     - name: Initialize Rust
-      command: "{{ homebrew_brew_bin_path }}/rustup-init -y"
+      ansible.builtin.command: "{{ homebrew_brew_bin_path }}/rustup-init -y"
+      args:
+        creates: "{{ cargo_bin_path }}"
       when: cargo_check.rc != 0
-    - name: Install Stable Rust
-      command: "{{ homebrew_brew_bin_path }}/rustup toolchain install stable"
-    - name: Install Nightly Rust
-      command: "{{ homebrew_brew_bin_path }}/rustup toolchain install nightly"
+      changed_when: "cargo_check.rc != 0"
+
+    - name: Check for rustup binary
+      ansible.builtin.stat:
+        path: "{{ rustup_bin_path }}"
+      register: rustup_binary
+
+    - name: List installed Rust toolchains
+      ansible.builtin.command: "{{ rustup_bin_path }} toolchain list --installed"
+      register: rustup_toolchains
+      changed_when: false
+      when: rustup_binary.stat.exists
+
+    - name: Install Stable Rust toolchain
+      ansible.builtin.command: "{{ rustup_bin_path }} toolchain install stable"
+      register: rustup_install_stable
+      when: >-
+        rustup_binary.stat.exists and
+        (rustup_toolchains is defined) and
+        ('stable' not in rustup_toolchains.stdout)
+      changed_when: "'installed' in (rustup_install_stable.stdout | lower) or 'updating' in (rustup_install_stable.stdout | lower)"
+
+    - name: Install Nightly Rust toolchain
+      ansible.builtin.command: "{{ rustup_bin_path }} toolchain install nightly"
+      register: rustup_install_nightly
+      when: >-
+        rustup_binary.stat.exists and
+        (rustup_toolchains is defined) and
+        ('nightly' not in rustup_toolchains.stdout)
+      changed_when: "'installed' in (rustup_install_nightly.stdout | lower) or 'updating' in (rustup_install_nightly.stdout | lower)"
+
 - name: Install Cargo Binaries
+  vars:
+    cargo_bin_dir: "{{ ansible_env.HOME }}/.cargo/bin"
   block:
-    - name: "Install Cargo Binaries"
+    - name: Install cargo binary {{ item }}
+      ansible.builtin.command: "cargo install {{ item }}"
+      args:
+        creates: "{{ cargo_bin_dir }}/{{ item }}"
       loop: "{{ cargo_installed_binaries }}"
-      command: "cargo install {{ item }}"
+      loop_control:
+        label: "{{ item }}"
+
 - name: Upgrade Cargo Binaries
   block:
-    - name: "Upgrade Cargo Binaries"
-      command: "cargo install-update -ai"
-    - name: "Upgrade Cargo GitHub Binaries"
-      command: "cargo install-update -aig"
+    - name: Upgrade Cargo Registry Binaries
+      ansible.builtin.command: "cargo install-update -ai"
+      register: cargo_upgrade_registry
+      changed_when: "'upgraded' in ((cargo_upgrade_registry.stdout | default('')) | lower) or 'installed' in ((cargo_upgrade_registry.stdout | default('')) | lower)"
+
+    - name: Upgrade Cargo GitHub Binaries
+      ansible.builtin.command: "cargo install-update -aig"
+      register: cargo_upgrade_github
+      changed_when: "'upgraded' in ((cargo_upgrade_github.stdout | default('')) | lower) or 'installed' in ((cargo_upgrade_github.stdout | default('')) | lower)"
