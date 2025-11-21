@@ -11,3 +11,7 @@
   roles:
     - role: geerlingguy.mac.homebrew
       tags: ["homebrew"]
+
+  tasks:
+    - import_tasks: tasks/rust.yml
+      tags: ['rust']
