@@ -49,11 +49,11 @@
   vars:
     cargo_bin_dir: "{{ ansible_env.HOME }}/.cargo/bin"
   block:
-    - name: Install cargo binary {{ item }}
+    - name: Install cargo binary
       ansible.builtin.command: "cargo install {{ item }}"
       args:
         creates: "{{ cargo_bin_dir }}/{{ item }}"
-      loop: "{{ cargo_installed_binaries }}"
+      loop: "{{ cargo_installed_binaries | default([]) }}"
       loop_control:
         label: "{{ item }}"
 
