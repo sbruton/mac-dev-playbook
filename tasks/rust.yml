@@ -76,6 +76,7 @@
 - name: Upgrade Cargo Binaries
   vars:
     cargo_env_path: "{{ ansible_env.HOME }}/.cargo/bin:{{ ansible_env.PATH }}"
+    # Reuses cargo_install_list from the "Install Cargo Binaries" block above
     cargo_update_installed: "{{ 'cargo-update' in cargo_install_list.stdout }}"
   environment:
     PATH: "{{ cargo_env_path }}"
