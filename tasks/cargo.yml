@@ -1,0 +1,11 @@
+- name: Install Rust Toolchains
+  block:
+    - name: Install Stable Rust.
+      command: "{{ homebrew_brew_bin_path }}/rustup toolchain install stable"
+    - name: Install Nightly Rust.
+      command: "{{ homebrew_brew_bin_path }}/rustup toolchain install nightly"
+- name: Install Cargo Binaries
+  block:
+    - name: Install Cargo Binary {{ item }}
+      loop: "{{ cargo_installed_binaries }}"
+      command: "{{ homebrew_brew_bin_path }}/cargo install {{ item }}"
