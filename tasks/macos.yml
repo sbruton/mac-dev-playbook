@@ -2,7 +2,7 @@
 - name: Configure default macOS settings
   tags: ["macos", "defaults"]
   vars:
-    terminal_bundle_id: "{{ macos_terminal_bundle_id | default('io.alacritty') }}"
+    terminal_bundle_id: "{{ macos_terminal_bundle_id | default('com.googlecode.iterm2') }}"
     terminal_extension: "{{ macos_terminal_extension | default('command') }}"
   block:
     - name: Ensure duti is present in PATH
@@ -21,5 +21,5 @@
         echo "updated-handler"
       args:
         executable: /bin/bash
-      register: alacritty_default_terminal
-      changed_when: "'updated-handler' in alacritty_default_terminal.stdout"
+      register: default_terminal_handler_result
+      changed_when: "'updated-handler' in default_terminal_handler_result.stdout"

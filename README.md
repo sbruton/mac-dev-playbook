@@ -41,7 +41,7 @@ The tooling included is quite opinionated based on technologies I am currently u
 | Development | [Visual Studio Code] | Extensible, language-agnostic IDE |
 | Networking | [Proton VPN] | VPN service client |
 | Secrets Management | [1Password] | GUI and CLI interfaces to 1Password |
-| Terminal Emulator | [Alacritty] | Fast, modern hardware-accelerated terminal emulator |
+| Terminal Emulator | [iTerm2] | Power-user terminal emulator for macOS |
 | Virtualization | [Docker] | Container-based virtualization |
 | Virtualization | [Tart] | Apple silicon virtualization |
 | Web Browser | [Brave] | Privacy-first, security-aware, chromium-based browser |
@@ -118,7 +118,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 
 ### macOS Settings
 
-After applications are installed, the playbook configures default applications via [`duti`].
+After applications are installed, the playbook configures default applications via [`duti`], setting [iTerm2] as the handler for `.command` scripts by default.
 
 ## Configuring a Mac
 
@@ -188,7 +188,7 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [Visual Studio Code]: https://code.visualstudio.com/
 [Proton VPN]: https://protonvpn.com/
 [1Password]: https://1password.com/
-[Alacritty]: https://github.com/alacritty/alacritty/
+[iTerm2]: https://iterm2.com/
 [Docker]: https://docker.com/
 [Tart]: https://github.com/cirruslabs/tart/
 [Brave]: https://brave.com/

@@ -1,4 +1,4 @@
-# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad, duti, subfinder, ffuf
+# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad, duti, subfinder, ffuf, iterm
 
 cargo_installed_binaries:
   - atuin
@@ -37,7 +37,6 @@ cargo_installed_binaries:
 homebrew_upgrade_all_packages: true
 
 homebrew_installed_packages:
-  - alacritty
   - ansible-lint
   - asciinema
   - cirruslabs/cli/tart
@@ -73,6 +72,7 @@ homebrew_cask_apps:
   - docker
   - firefox@developer-edition
   - font-jetbrains-mono-nerd-font
+  - iterm2
   - kicad
   - omnigraffle
   - openscad
