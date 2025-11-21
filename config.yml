@@ -63,7 +63,6 @@ homebrew_cask_apps:
   - autodesk-fusion
   - blender
   - brave-browser
-  - cirruslabs/cli/tart
   - discord
   - docker
   - firefox@developer-edition
@@ -75,5 +74,6 @@ homebrew_cask_apps:
   - postman
   - protonvpn
   - slack
+  - tart
   - visual-studio-code
   - zoom
