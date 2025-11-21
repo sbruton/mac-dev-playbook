@@ -22,7 +22,7 @@
       register: rustup_binary
 
     - name: List installed Rust toolchains
-      ansible.builtin.command: "{{ rustup_bin_path }} toolchain list --installed"
+      ansible.builtin.command: "{{ rustup_bin_path }} toolchain list"
       register: rustup_toolchains
       changed_when: false
       when: rustup_binary.stat.exists
