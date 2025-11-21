@@ -12,4 +12,5 @@ mktemp
 omnigraffle
 orcaslicer
 protonvpn
+rustup
 watchexec

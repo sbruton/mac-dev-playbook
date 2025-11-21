@@ -3,7 +3,7 @@
     - name: Check if cargo is installed
       ansible.builtin.command: which cargo
       register: cargo_check
-      ignore_errors: yes
+      ignore_errors: true
       changed_when: false
     - name: Initialize Rust
       command: "{{ homebrew_brew_bin_path }}/rustup-init -y"
