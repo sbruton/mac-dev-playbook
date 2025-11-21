@@ -50,12 +50,15 @@
     cargo_bin_dir: "{{ ansible_env.HOME }}/.cargo/bin"
   block:
     - name: Install cargo binary
-      ansible.builtin.command: "cargo install {{ item }}"
+      vars:
+        cargo_package_name: "{{ (item.name | default(item)) if item is mapping else item }}"
+        cargo_package_locked: "{{ (item.locked | default(false)) if item is mapping else false }}"
+      ansible.builtin.command: "cargo install{{ ' --locked' if cargo_package_locked else '' }} {{ cargo_package_name }}"
       args:
-        creates: "{{ cargo_bin_dir }}/{{ item }}"
+        creates: "{{ cargo_bin_dir }}/{{ cargo_package_name }}"
       loop: "{{ cargo_installed_binaries | default([]) }}"
       loop_control:
-        label: "{{ item }}"
+        label: "{{ cargo_package_name }}"
 
 - name: Upgrade Cargo Binaries
   block:

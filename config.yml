@@ -33,7 +33,7 @@ cargo_installed_binaries:
   - procs
   - ripgrep
   - twiggy
-  - watchexec-cli
+  - { name: watchexec-cli, locked: true }
 
 homebrew_upgrade_all_packages: true
 
