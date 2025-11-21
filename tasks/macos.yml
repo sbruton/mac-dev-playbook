@@ -111,7 +111,7 @@
     - name: Enforce ISO-style date format (YYYY-MM-DD)
       ansible.builtin.shell: |
         set -euo pipefail
-        target="yyyy-MM-dd"
+        target="y-MM-dd"
         plist="$HOME/Library/Preferences/.GlobalPreferences.plist"
 
         if [ ! -f "$plist" ]; then
@@ -120,23 +120,31 @@
         fi
 
         changed=0
-        for node in AppleICUDateFormatStrings AppleICUNumericDateFormatStrings; do
-          if ! /usr/libexec/PlistBuddy -c "Print :$node" "$plist" >/dev/null 2>&1; then
-            /usr/libexec/PlistBuddy -c "Add :$node dict" "$plist" >/dev/null
+
+        if ! /usr/libexec/PlistBuddy -c "Print :AppleICUDateFormatStrings" "$plist" >/dev/null 2>&1; then
+          /usr/libexec/PlistBuddy -c "Add :AppleICUDateFormatStrings dict" "$plist" >/dev/null
+          changed=1
+        fi
+
+        current="$(/usr/libexec/PlistBuddy -c "Print :AppleICUDateFormatStrings:1" "$plist" 2>/dev/null || true)"
+        if [ "$current" != "$target" ]; then
+          if ! /usr/libexec/PlistBuddy -c "Set :AppleICUDateFormatStrings:1 $target" "$plist" >/dev/null 2>&1; then
+            /usr/libexec/PlistBuddy -c "Add :AppleICUDateFormatStrings:1 string $target" "$plist" >/dev/null
+          fi
+          changed=1
+        fi
+
+        for extra_key in 2 3 4; do
+          if /usr/libexec/PlistBuddy -c "Print :AppleICUDateFormatStrings:$extra_key" "$plist" >/dev/null 2>&1; then
+            /usr/libexec/PlistBuddy -c "Delete :AppleICUDateFormatStrings:$extra_key" "$plist" >/dev/null
             changed=1
           fi
-
-          for key in 1 2; do
-            current="$(/usr/libexec/PlistBuddy -c "Print :$node:$key" "$plist" 2>/dev/null || true)"
-            if [ "$current" = "$target" ]; then
-              continue
-            fi
-            if ! /usr/libexec/PlistBuddy -c "Set :$node:$key $target" "$plist" >/dev/null 2>&1; then
-              /usr/libexec/PlistBuddy -c "Add :$node:$key string $target" "$plist" >/dev/null
-            fi
-            changed=1
-          done
         done
+
+        if /usr/libexec/PlistBuddy -c "Print :AppleICUNumericDateFormatStrings" "$plist" >/dev/null 2>&1; then
+          /usr/libexec/PlistBuddy -c "Delete :AppleICUNumericDateFormatStrings" "$plist" >/dev/null
+          changed=1
+        fi
 
         if [ "$changed" -eq 0 ]; then
           echo "date-format-already-set"
