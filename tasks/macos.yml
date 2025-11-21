@@ -1,4 +1,5 @@
----
+# cspell:ignore controlcenter, duti, pipefail, googlecode, iterm
+
 - name: Configure default macOS settings
   tags: ["macos", "defaults"]
   vars:
@@ -92,38 +93,37 @@
       ansible.builtin.shell: |
         set -euo pipefail
         target="yyyy-MM-dd"
+        plist="$HOME/Library/Preferences/.GlobalPreferences.plist"
 
-        current_alpha=""
-        if output="$(/usr/bin/defaults read NSGlobalDomain AppleICUDateFormatStrings 2>/dev/null)"; then
-          current_alpha="$output"
+        if [ ! -f "$plist" ]; then
+          /usr/bin/defaults write NSGlobalDomain TempGlobalPreferencesInit -bool true >/dev/null
+          /usr/bin/defaults delete NSGlobalDomain TempGlobalPreferencesInit >/dev/null 2>&1 || true
         fi
 
-        current_numeric=""
-        if output="$(/usr/bin/defaults read NSGlobalDomain AppleICUNumericDateFormatStrings 2>/dev/null)"; then
-          current_numeric="$output"
-        fi
+        changed=0
+        for node in AppleICUDateFormatStrings AppleICUNumericDateFormatStrings; do
+          if ! /usr/libexec/PlistBuddy -c "Print :$node" "$plist" >/dev/null 2>&1; then
+            /usr/libexec/PlistBuddy -c "Add :$node dict" "$plist" >/dev/null
+            changed=1
+          fi
 
-        needs_update=0
-        for key in 1 2 3 4; do
-          pattern="$key = \"$target\";"
-          if ! printf '%s\n' "$current_alpha" | /usr/bin/grep -F -q "$pattern"; then
-            needs_update=1
-            break
-          fi
-          if ! printf '%s\n' "$current_numeric" | /usr/bin/grep -F -q "$pattern"; then
-            needs_update=1
-            break
-          fi
+          for key in 1 2; do
+            current="$(/usr/libexec/PlistBuddy -c "Print :$node:$key" "$plist" 2>/dev/null || true)"
+            if [ "$current" = "$target" ]; then
+              continue
+            fi
+            if ! /usr/libexec/PlistBuddy -c "Set :$node:$key $target" "$plist" >/dev/null 2>&1; then
+              /usr/libexec/PlistBuddy -c "Add :$node:$key string $target" "$plist" >/dev/null
+            fi
+            changed=1
+          done
         done
 
-        if [ "$needs_update" -eq 0 ]; then
+        if [ "$changed" -eq 0 ]; then
           echo "date-format-already-set"
-          exit 0
+        else
+          echo "date-format-updated"
         fi
-
-        /usr/bin/defaults write NSGlobalDomain AppleICUDateFormatStrings -dict 1 "$target" 2 "$target" 3 "$target" 4 "$target"
-        /usr/bin/defaults write NSGlobalDomain AppleICUNumericDateFormatStrings -dict 1 "$target" 2 "$target" 3 "$target" 4 "$target"
-        echo "date-format-updated"
       args:
         executable: /bin/bash
       register: date_format_result
