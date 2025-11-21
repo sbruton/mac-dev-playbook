@@ -47,7 +47,7 @@
         rustup_binary.stat.exists and
         (rustup_toolchains is defined) and
         ('nightly' not in rustup_toolchains.stdout)
-      changed_when: "'installed' in (rustup_install_nightly.stdout | lower) or 'updating' in (rustup_install_nightly.stdout | lower)"
+      changed_when: "'installed' in (rustup_install_nightly.stdout | lower)"
 
 - name: Install Cargo Binaries
   vars:
