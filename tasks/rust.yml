@@ -80,7 +80,7 @@
     PATH: "{{ cargo_env_path }}"
   block:
     - name: Check if cargo-update is installed
-      ansible.builtin.command: which cargo-install-update
+      ansible.builtin.command: cargo install --list
       register: cargo_update_check
       ignore_errors: true
       changed_when: false
@@ -88,11 +88,11 @@
     - name: Upgrade Cargo Registry Binaries
       ansible.builtin.command: "cargo install-update -ai"
       register: cargo_upgrade_registry
-      when: cargo_update_check.rc == 0
+      when: cargo_update_check.rc == 0 and 'cargo-update' in cargo_update_check.stdout
       changed_when: "'upgraded' in ((cargo_upgrade_registry.stdout | default('')) | lower) or 'installed' in ((cargo_upgrade_registry.stdout | default('')) | lower)"
 
     - name: Upgrade Cargo GitHub Binaries
       ansible.builtin.command: "cargo install-update -aig"
       register: cargo_upgrade_github
-      when: cargo_update_check.rc == 0
+      when: cargo_update_check.rc == 0 and 'cargo-update' in cargo_update_check.stdout
       changed_when: "'upgraded' in ((cargo_upgrade_github.stdout | default('')) | lower) or 'installed' in ((cargo_upgrade_github.stdout | default('')) | lower)"
