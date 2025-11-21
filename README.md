@@ -9,15 +9,15 @@ This repository contains an Ansible playbook and supporting scripts to configure
 The tooling included is quite opinionated based on technologies I am currently using personally and professionally. If you are into Rust-based software development, making things (electronics, 3D printing, machining), or cybersecurity then you may find this playbook useful as a starting point for your own Mac configuration.
 
 <!-- toc:start -->
-- [Playbook-Installed Software](#playbook-installed-software)
-  - [Applications](#applications)
-  - [Command-Line Tools](#command-line-tools)
-  - [Rust Components](#rust-components)
-  - [Miscellaneous Items](#miscellaneous-items)
+- [Playbook-Managed Configuration](#playbook-managed-configuration)
+  - [Applications Installed](#applications-installed)
+  - [Command-Line Tools Installed](#command-line-tools-installed)
+  - [Rust Components Installed](#rust-components-installed)
+  - [Miscellaneous Items Installed](#miscellaneous-items-installed)
+  - [macOS Settings](#macos-settings)
 - [Configuring a Mac](#configuring-a-mac)
   - [Local Configuration](#local-configuration)
   - [Remote Network Configuration](#remote-network-configuration)
-- [Default macOS Settings](#default-macos-settings)
 - [License and Attribution](#license-and-attribution)
 <!-- toc:end -->
 
@@ -61,6 +61,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | Development Util | [`md-toc`] | Markdown table-of-contents generator |
 | Development Util | [`mdbook`] | Markdown-based static-book generator; typically used for docs |
 | Development Util | [`twiggy`] | WASM binary size inspection |
+| Development Util | [`yamllint`] | YAML correctness evaluation |
 | Device Management | [`lsusb`] | USB device information |
 | Device Management | [`openocd`] | On-chip debugger serial interface |
 | Editor | [`nvim`] | Neovim `vim`-based editor |
@@ -195,6 +196,7 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [`md-toc`]: https://github.com/pbzweihander/markdown-toc/
 [`mdbook`]: https://github.com/rust-lang/mdBook/
 [`twiggy`]: https://github.com/AlexEne/twiggy/
+[`yamllint`]: https://github.com/adrienverge/yamllint/
 [`lsusb`]: https://github.com/jlhonora/lsusb/
 [`openocd`]: https://openocd.org/
 [`nvim`]: https://neovim.io/

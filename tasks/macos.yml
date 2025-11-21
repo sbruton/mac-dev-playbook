@@ -22,4 +22,4 @@
       args:
         executable: /bin/bash
       register: alacritty_default_terminal
-      changed_when: "updated-handler" in alacritty_default_terminal.stdout
+      changed_when: "'updated-handler' in alacritty_default_terminal.stdout"

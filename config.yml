@@ -52,6 +52,7 @@ homebrew_installed_packages:
   - rustup
   - tmux
   - xz
+  - yamllint
 
 homebrew_taps:
   - { name: cirruslabs/cli, url: 'https://github.com/cirruslabs/homebrew-cli' }
