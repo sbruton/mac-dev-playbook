@@ -28,12 +28,12 @@
       become: true
       ansible.builtin.shell: |
         set -euo pipefail
-        current="$(/usr/bin/defaults read com.apple.controlcenter AirplayRecieverEnabled 2>/dev/null || echo 1)"
+        current="$(/usr/bin/defaults read com.apple.controlcenter AirplayReceiverEnabled 2>/dev/null || echo 1)"
         if [ "$current" = "0" ]; then
           echo "airplay-disabled"
           exit 0
         fi
-        /usr/bin/defaults write com.apple.controlcenter AirplayRecieverEnabled -bool false
+        /usr/bin/defaults write com.apple.controlcenter AirplayReceiverEnabled -bool false
         echo "airplay-updated"
       args:
         executable: /bin/bash
