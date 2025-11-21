@@ -1,11 +1,19 @@
 - name: Install Rust Toolchains
   block:
-    - name: Install Stable Rust.
+    - name: Check if cargo is installed
+      ansible.builtin.command: which cargo
+      register: cargo_check
+      ignore_errors: yes
+      changed_when: false
+    - name: Initialize Rust
+      command: "{{ homebrew_brew_bin_path }}/rustup-init -y"
+      when: cargo_check.rc != 0
+    - name: Install Stable Rust
       command: "{{ homebrew_brew_bin_path }}/rustup toolchain install stable"
-    - name: Install Nightly Rust.
+    - name: Install Nightly Rust
       command: "{{ homebrew_brew_bin_path }}/rustup toolchain install nightly"
 - name: Install Cargo Binaries
   block:
     - name: Install Cargo Binary {{ item }}
       loop: "{{ cargo_installed_binaries }}"
-      command: "{{ homebrew_brew_bin_path }}/cargo install {{ item }}"
+      command: "cargo install {{ item }}"
