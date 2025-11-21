@@ -89,6 +89,25 @@
       register: first_weekday_result
       changed_when: "'monday-updated' in first_weekday_result.stdout"
 
+    - name: Enable dark appearance
+      ansible.builtin.shell: |
+        set -euo pipefail
+        current_style="$(/usr/bin/defaults read NSGlobalDomain AppleInterfaceStyle 2>/dev/null || echo Light)"
+        auto_mode="$(/usr/bin/defaults read NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically 2>/dev/null || echo 0)"
+
+        if [ "$current_style" = "Dark" ] && [ "$auto_mode" = "0" ]; then
+          echo "dark-mode-already-set"
+          exit 0
+        fi
+
+        /usr/bin/defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+        /usr/bin/defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool false
+        echo "dark-mode-updated"
+      args:
+        executable: /bin/bash
+      register: dark_mode_result
+      changed_when: "'dark-mode-updated' in dark_mode_result.stdout"
+
     - name: Enforce ISO-style date format (YYYY-MM-DD)
       ansible.builtin.shell: |
         set -euo pipefail

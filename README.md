@@ -118,7 +118,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 
 ### macOS Settings
 
-After applications are installed, the playbook configures a few macOS defaults: [`duti`] assigns [iTerm2] as the handler for `.command` scripts, the built-in AirPlay receiver is disabled for privacy, measurement units switch to metric, weeks start on Monday, dates render as `YYYY-MM-DD`, the system clock uses 24-hour time, and the time zone auto-updates based on location.
+After applications are installed, the playbook configures a few macOS defaults: [`duti`] assigns [iTerm2] as the handler for `.command` scripts, the built-in AirPlay receiver is disabled for privacy, Dark Mode stays enabled, measurement units switch to metric, weeks start on Monday, dates render as `YYYY-MM-DD`, the system clock uses 24-hour time, and the time zone auto-updates based on location.
 
 ## Configuring a Mac
 
