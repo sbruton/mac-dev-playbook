@@ -55,7 +55,6 @@ homebrew_installed_packages:
   - rustup
   - subfinder
   - tmux
-  - volatility
   - xz
   - yamllint
 

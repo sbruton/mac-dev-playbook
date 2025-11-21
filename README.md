@@ -57,7 +57,6 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | Cybersecurity | [`nmap`] | Network port scanner |
 | Cybersecurity | [`openssl`] | Cryptographic functions |
 | Cybersecurity | [`subfinder`] | Passive subdomain discovery |
-| Cybersecurity | [`volatility`] | Memory forensics |
 | Development Util | [`ansible-lint`] | Ansible configuration correctness evaluation |
 | Development Util | [`elf2uf2`] | ELF to UF2 binary conversion |
 | Development Util | [`gh`] | GitHub CLI |
@@ -198,7 +197,6 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [`nmap`]: https://nmap.org/
 [`openssl`]: https://openssl.org/
 [`subfinder`]: https://github.com/projectdiscovery/subfinder/
-[`volatility`]: https://github.com/volatilityfoundation/volatility3/
 [`ansible-lint`]: https://docs.ansible.com/projects/lint/
 [`elf2uf2`]: https://github.com/JoNil/elf2uf2-rs/
 [`gh`]: https://cli.github.com/
