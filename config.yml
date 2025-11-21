@@ -1,4 +1,5 @@
 # cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad
+homebrew_upgrade_all_packages: true
 
 cargo_installed_binaries:
   - alacritty
@@ -50,7 +51,7 @@ homebrew_installed_packages:
   - xz
 
 homebrew_taps:
-  - "cirruslabs/cli"
+  - { name: cirruslabs/cli, url: 'https://github.com/cirruslabs/homebrew-cli' }
 
 homebrew_cask_appdir: /Applications
 
