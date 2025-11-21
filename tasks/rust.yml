@@ -14,6 +14,12 @@
       command: "{{ homebrew_brew_bin_path }}/rustup toolchain install nightly"
 - name: Install Cargo Binaries
   block:
-    - name: Install Cargo Binary {{ item }}
+    - name: "Install Cargo Binaries"
       loop: "{{ cargo_installed_binaries }}"
       command: "cargo install {{ item }}"
+- name: Upgrade Cargo Binaries
+  block:
+    - name: "Upgrade Cargo Binaries"
+      command: "cargo install-update -ai"
+    - name: "Upgrade Cargo GitHub Binaries"
+      command: "cargo install-update -aig"
