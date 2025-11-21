@@ -1,7 +1,6 @@
 # cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad, duti, subfinder, ffuf
 
 cargo_installed_binaries:
-  - alacritty
   - atuin
   - bat
   - cargo-audit
@@ -38,6 +37,7 @@ cargo_installed_binaries:
 homebrew_upgrade_all_packages: true
 
 homebrew_installed_packages:
+  - alacritty
   - ansible-lint
   - asciinema
   - cirruslabs/cli/tart
