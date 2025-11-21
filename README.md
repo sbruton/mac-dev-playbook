@@ -36,6 +36,7 @@ The tooling included is quite opinionated based on technologies I am currently u
 | Communication | [Discord] | Community-based chat service |
 | Communication | [Slack] | Group-based chat service |
 | Communication | [Zoom] | Video conferencing |
+| Cybersecurity | [Wireshark] | Network capture analytics |
 | Development | [Postman] | HTTP API design, testing, and emulation |
 | Development | [Visual Studio Code] | Extensible, language-agnostic IDE |
 | Networking | [Proton VPN] | VPN service client |
@@ -56,6 +57,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | Cybersecurity | [`nmap`] | Network port scanner |
 | Cybersecurity | [`openssl`] | Cryptographic functions |
 | Cybersecurity | [`subfinder`] | Passive subdomain discovery |
+| Cybersecurity | [`volatility`] | Memory forensics |
 | Development Util | [`ansible-lint`] | Ansible configuration correctness evaluation |
 | Development Util | [`elf2uf2`] | ELF to UF2 binary conversion |
 | Development Util | [`gh`] | GitHub CLI |
@@ -182,6 +184,7 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [Discord]: https://discord.com/
 [Slack]: https://slack.com/
 [Zoom]: https://zoom.com/
+[Wireshark]: https://www.wireshark.org/
 [Postman]: https://www.postman.com/
 [Visual Studio Code]: https://code.visualstudio.com/
 [Proton VPN]: https://protonvpn.com/
@@ -191,8 +194,11 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [Tart]: https://github.com/cirruslabs/tart/
 [Brave]: https://brave.com/
 [Firefox Developer Edition]: https://www.firefox.com/en-US/channel/desktop/developer/
+[`ffuf`]: https://github.com/ffuf/ffuf/
 [`nmap`]: https://nmap.org/
 [`openssl`]: https://openssl.org/
+[`subfinder`]: https://github.com/projectdiscovery/subfinder/
+[`volatility`]: https://github.com/volatilityfoundation/volatility3/
 [`ansible-lint`]: https://docs.ansible.com/projects/lint/
 [`elf2uf2`]: https://github.com/JoNil/elf2uf2-rs/
 [`gh`]: https://cli.github.com/

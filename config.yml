@@ -55,6 +55,7 @@ homebrew_installed_packages:
   - rustup
   - subfinder
   - tmux
+  - volatility
   - xz
   - yamllint
 
@@ -81,4 +82,5 @@ homebrew_cask_apps:
   - protonvpn
   - slack
   - visual-studio-code
+  - wireshark
   - zoom

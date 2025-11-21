@@ -14,3 +14,4 @@ orcaslicer
 protonvpn
 rustup
 watchexec
+wireshark

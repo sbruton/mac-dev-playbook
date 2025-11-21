@@ -46,6 +46,10 @@
       changed_when: "'installed' in (rustup_install_nightly.stdout | lower) or 'updating' in (rustup_install_nightly.stdout | lower)"
 
 - name: Install Cargo Binaries
+  vars:
+    cargo_env_path: "{{ ansible_env.HOME }}/.cargo/bin:{{ ansible_env.PATH }}"
+  environment:
+    PATH: "{{ cargo_env_path }}"
   block:
     - name: List installed cargo packages
       ansible.builtin.command: cargo install --list
@@ -66,6 +70,10 @@
       changed_when: cargo_install_result.rc == 0
 
 - name: Upgrade Cargo Binaries
+  vars:
+    cargo_env_path: "{{ ansible_env.HOME }}/.cargo/bin:{{ ansible_env.PATH }}"
+  environment:
+    PATH: "{{ cargo_env_path }}"
   block:
     - name: Upgrade Cargo Registry Binaries
       ansible.builtin.command: "cargo install-update -ai"
