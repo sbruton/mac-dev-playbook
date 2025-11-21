@@ -24,21 +24,22 @@
       register: default_terminal_handler_result
       changed_when: "'updated-handler' in default_terminal_handler_result.stdout"
 
-    - name: Disable AirPlay receiver
-      become: true
-      ansible.builtin.shell: |
-        set -euo pipefail
-        current="$(/usr/bin/defaults read com.apple.controlcenter AirplayReceiverEnabled 2>/dev/null || echo 1)"
-        if [ "$current" = "0" ]; then
-          echo "airplay-disabled"
-          exit 0
-        fi
-        /usr/bin/defaults write com.apple.controlcenter AirplayReceiverEnabled -bool false
-        echo "airplay-updated"
-      args:
-        executable: /bin/bash
-      register: airplay_receiver_result
-      changed_when: "'airplay-updated' in airplay_receiver_result.stdout"
+    ## Doesn't work, needs further investigation
+    # - name: Disable AirPlay receiver
+    #   become: true
+    #   ansible.builtin.shell: |
+    #     set -euo pipefail
+    #     current="$(/usr/bin/defaults read com.apple.controlcenter AirplayReceiverEnabled 2>/dev/null || echo 1)"
+    #     if [ "$current" = "0" ]; then
+    #       echo "airplay-disabled"
+    #       exit 0
+    #     fi
+    #     /usr/bin/defaults write com.apple.controlcenter AirplayReceiverEnabled -bool false
+    #     echo "airplay-updated"
+    #   args:
+    #     executable: /bin/bash
+    #   register: airplay_receiver_result
+    #   changed_when: "'airplay-updated' in airplay_receiver_result.stdout"
 
     - name: Enable 24-hour time format
       ansible.builtin.shell: |
@@ -54,23 +55,6 @@
         executable: /bin/bash
       register: time_format_result
       changed_when: "'time-format-updated' in time_format_result.stdout"
-
-    ## This is the default setting
-    # - name: Enable time zone updates based on location
-    #   become: true
-    #   ansible.builtin.shell: |
-    #     set -euo pipefail
-    #     current="$(/usr/bin/defaults read /Library/Preferences/com.apple.timezone.auto Active 2>/dev/null || echo 0)"
-    #     if [ "$current" = "1" ]; then
-    #       echo "timezone-auto-set"
-    #       exit 0
-    #     fi
-    #     /usr/bin/defaults write /Library/Preferences/com.apple.timezone.auto Active -bool true
-    #     echo "timezone-auto-updated"
-    #   args:
-    #     executable: /bin/bash
-    #   register: timezone_auto_result
-    #   changed_when: "'timezone-auto-updated' in timezone_auto_result.stdout"
 
     - name: Set measurement system to metric
       ansible.builtin.shell: |
@@ -92,12 +76,12 @@
     - name: Set Monday as the first day of the week
       ansible.builtin.shell: |
         set -euo pipefail
-        current="$({ /usr/bin/defaults read NSGlobalDomain AppleFirstWeekday 2>/dev/null || true; } | /usr/bin/awk -F'= ' '/gregorian/ {gsub(/;| /,"",$2); print $2}' || echo '')"
-        if [ "$current" = "2" ]; then
+        current="$({ /usr/bin/defaults read NSGlobalDomain AppleFirstWeekday 2>/dev/null; } || true)"
+        if printf '%s\n' "$current" | /usr/bin/grep -F -q 'gregorian = 2;'; then
           echo "monday-already-set"
           exit 0
         fi
-        /usr/bin/defaults write NSGlobalDomain AppleFirstWeekday -dict gregorian 2
+        /usr/bin/defaults write NSGlobalDomain AppleFirstWeekday -dict gregorian -int 2
         echo "monday-updated"
       args:
         executable: /bin/bash
