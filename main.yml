@@ -15,3 +15,5 @@
   tasks:
     - import_tasks: tasks/rust.yml
       tags: ['rust']
+    - import_tasks: tasks/macos.yml
+      tags: ["macos"]

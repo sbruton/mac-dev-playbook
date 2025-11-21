@@ -1,0 +1,25 @@
+---
+- name: Configure default macOS settings
+  tags: ["macos", "defaults"]
+  vars:
+    terminal_bundle_id: "{{ macos_terminal_bundle_id | default('io.alacritty') }}"
+    terminal_extension: "{{ macos_terminal_extension | default('command') }}"
+  block:
+    - name: Ensure duti is present in PATH
+      ansible.builtin.command: which duti
+      changed_when: false
+
+    - name: Set Alacritty as default handler for .{{ terminal_extension }} files
+      ansible.builtin.shell: |
+        set -euo pipefail
+        current="$(duti -x {{ terminal_extension }} | awk 'NR==3 {print $0}' || true)"
+        if [ "$current" = "{{ terminal_bundle_id }}" ]; then
+          echo "already-set"
+          exit 0
+        fi
+        duti -s {{ terminal_bundle_id }} {{ terminal_extension }} all >/dev/null
+        echo "updated-handler"
+      args:
+        executable: /bin/bash
+      register: alacritty_default_terminal
+      changed_when: "updated-handler" in alacritty_default_terminal.stdout

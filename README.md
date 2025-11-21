@@ -2,7 +2,7 @@
 
 [![CI][badge-gh-actions]][link-gh-actions]
 
-<!-- cspell:ignore nmap, lsusb, nvim, difft, fblog, procs, deadlinks, systemsetup, setremotelogin, openocd -->
+<!-- cspell:ignore nmap, lsusb, nvim, difft, fblog, procs, deadlinks, systemsetup, setremotelogin, openocd, duti -->
 
 This repository contains an Ansible playbook and supporting scripts to configure macOS for software and hardware development. It covers end-to-end product development–ideation, design, planning, software/hardware development, modeling, manufacturing, and testing.
 
@@ -17,12 +17,13 @@ The tooling included is quite opinionated based on technologies I am currently u
 - [Configuring a Mac](#configuring-a-mac)
   - [Local Configuration](#local-configuration)
   - [Remote Network Configuration](#remote-network-configuration)
+- [Default macOS Settings](#default-macos-settings)
 - [License and Attribution](#license-and-attribution)
 <!-- toc:end -->
 
-## Playbook-Installed Software
+## Playbook-Managed Configuration
 
-### Applications
+### Applications Installed
 
 | Application Type | Application | Description |
 | --- | --- | --- |
@@ -45,7 +46,7 @@ The tooling included is quite opinionated based on technologies I am currently u
 | Web Browser | [Brave] | Privacy-first, security-aware, chromium-based browser |
 | Web Browser | [Firefox Developer Edition] | Another browser with privacy and security focus |
 
-### Command-Line Tools
+### Command-Line Tools Installed
 
 This playbook includes an opinionated mix of modern and traditional Linux/Unix command line utilities for software development, general systems operation, and cybersecurity.
 
@@ -77,8 +78,9 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | Shell Util | [`asciinema`] | Terminal capture and playback |
 | Shell Util | [`atuin`] | Shell history search and sync |
 | Shell Util | [`tmux`] | Multi-terminal manager |
+| Systems Management | [`duti`] | Default handler app configuration |
 
-### Rust Components
+### Rust Components Installed
 
 | Component Type | Component | Description |
 | --- | --- | --- |
@@ -103,10 +105,14 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | Toolchain | [Rust] Stable | Latest stable Rust compiler, standard lib, and tools |
 | Toolchain | [Rust] Nightly | Most recent Rust compiler, standard lib, and tools |
 
-### Miscellaneous Items
+### Miscellaneous Items Installed
 | Item | Description |
 | --- | --- |
 | [JetBrains Mono Font] | Awesome coding font |
+
+### macOS Settings
+
+After applications are installed, the playbook configures default applications via [`duti`].
 
 ## Configuring a Mac
 
@@ -151,7 +157,6 @@ Upon a fresh install of macOS, complete the post-install wizard to setup your in
     ```sh
     ./bin/remote.sh <hostname> <username>
     ```
-
 
 ## License and Attribution
 
@@ -207,6 +212,7 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [`asciinema`]: https://asciinema.org/
 [`atuin`]: https://atuin.sh/
 [`tmux`]: https://github.com/tmux/tmux/
+[`duti`]: https://github.com/moretension/duti/
 [`cargo-binutils`]: https://github.com/rust-embedded/cargo-binutils/
 [`cargo-bloat`]: https://github.com/RazrFalcon/cargo-bloat/
 [`cargo-show-asm`]: https://github.com/pacak/cargo-show-asm/

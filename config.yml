@@ -1,4 +1,4 @@
-# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad
+# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad, duti
 
 cargo_installed_binaries:
   - alacritty
@@ -40,6 +40,7 @@ homebrew_upgrade_all_packages: true
 homebrew_installed_packages:
   - asciinema
   - cirruslabs/cli/tart
+  - duti
   - gh
   - git
   - htop
