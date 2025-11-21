@@ -2,7 +2,7 @@
 
 [![CI][badge-gh-actions]][link-gh-actions]
 
-<!-- cspell:ignore nmap, lsusb, nvim, difft, fblog, procs, deadlinks, systemsetup, setremotelogin, openocd, duti -->
+<!-- cspell:ignore nmap, lsusb, nvim, difft, fblog, procs, deadlinks, systemsetup, setremotelogin, openocd, duti, subfinder -->
 
 This repository contains an Ansible playbook and supporting scripts to configure macOS for software and hardware development. It covers end-to-end product development–ideation, design, planning, software/hardware development, modeling, manufacturing, and testing.
 
@@ -54,6 +54,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | --- | --- | --- |
 | Cybersecurity | [`nmap`] | Network port scanner |
 | Cybersecurity | [`openssl`] | Cryptographic functions |
+| Cybersecurity | [`subfinder`] | Passive subdomain discovery |
 | Development Util | [`ansible-lint`] | Ansible configuration correctness evaluation |
 | Development Util | [`elf2uf2`] | ELF to UF2 binary conversion |
 | Development Util | [`gh`] | GitHub CLI |

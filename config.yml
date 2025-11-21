@@ -1,4 +1,4 @@
-# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad, duti
+# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad, duti, subfinder
 
 cargo_installed_binaries:
   - alacritty
@@ -52,6 +52,7 @@ homebrew_installed_packages:
   - open-ocd
   - openssl
   - rustup
+  - subfinder
   - tmux
   - xz
   - yamllint
