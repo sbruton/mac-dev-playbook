@@ -106,6 +106,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 | Package Management | [`dioxus-cli`] | Dioxus application generation, runner, and bundler |
 | Toolchain | [Rust] Stable | Latest stable Rust compiler, standard lib, and tools |
 | Toolchain | [Rust] Nightly | Most recent Rust compiler, standard lib, and tools |
+| Toolchain | [LLVM] | Reusable compiler components |
 
 ### Miscellaneous Items Installed
 | Item | Description |
@@ -123,7 +124,7 @@ After applications are installed, the playbook configures default applications v
 1. **Configure Pre-Requisites:**
     ```sh
     # Include Ansible and Homebrew Binaries in PATH
-    export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
+    export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:/opt/homebrew/opt/llvm/bin:$PATH"
     # Upgrade PIP
     sudo pip3 install --upgrade pip
     # Install Ansible
@@ -236,5 +237,6 @@ This playbook borrows from the work done by Jeff Geerling and others in [geerlin
 [`cargo-rpm`]: https://github.com/iqlusioninc/cargo-rpm/
 [`cargo-update`]: https://github.com/nabijaczleweli/cargo-update/
 [`dioxus-cli`]: https://dioxuslabs.com/
+[LLVM]: https://llvm.org/
 [JetBrains Mono Font]: https://www.jetbrains.com/lp/mono/
 [`LICENSE`]: ./LICENSE

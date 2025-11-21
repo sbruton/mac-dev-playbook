@@ -45,6 +45,7 @@ homebrew_installed_packages:
   - gh
   - git
   - htop
+  - llvm
   - lsusb
   - neovim
   - nmap
