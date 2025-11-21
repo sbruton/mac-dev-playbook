@@ -38,7 +38,7 @@
         rustup_binary.stat.exists and
         (rustup_toolchains is defined) and
         ('stable' not in rustup_toolchains.stdout)
-      changed_when: "'installed' in (rustup_install_stable.stdout | lower) or 'updating' in (rustup_install_stable.stdout | lower)"
+      changed_when: "'installed' in (rustup_install_stable.stdout | lower)"
 
     - name: Install Nightly Rust toolchain
       ansible.builtin.command: "{{ rustup_bin_path }} toolchain install nightly"
