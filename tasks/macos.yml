@@ -54,3 +54,19 @@
         executable: /bin/bash
       register: time_format_result
       changed_when: "'time-format-updated' in time_format_result.stdout"
+
+    - name: Enable time zone updates based on location
+      become: true
+      ansible.builtin.shell: |
+        set -euo pipefail
+        current="$(/usr/bin/defaults read /Library/Preferences/com.apple.timezone.auto Active 2>/dev/null || echo 0)"
+        if [ "$current" = "1" ]; then
+          echo "timezone-auto-set"
+          exit 0
+        fi
+        /usr/bin/defaults write /Library/Preferences/com.apple.timezone.auto Active -bool true
+        echo "timezone-auto-updated"
+      args:
+        executable: /bin/bash
+      register: timezone_auto_result
+      changed_when: "'timezone-auto-updated' in timezone_auto_result.stdout"
