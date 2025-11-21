@@ -32,7 +32,7 @@ The tooling included is quite opinionated based on technologies I am currently u
 | CAD/CAM | [KiCad] | Electronics schematic capture and PCB design |
 | CAD/CAM | [OmniGraffle] | Diagraming tool for flowcharts, floor plans, layouts, etc |
 | CAD/CAM | [OpenSCAD] | Programmable 3D solid modeler |
-| CAD/CAM | [OrcaSlicer] | 3D model gcode path generation for FDM/FFF printers |
+| CAD/CAM | [OrcaSlicer] | 3D model G-code path generation for FDM/FFF printers |
 | Communication | [Discord] | Community-based chat service |
 | Communication | [Slack] | Group-based chat service |
 | Communication | [Zoom] | Video conferencing |
