@@ -2,7 +2,7 @@
 
 [![CI][badge-gh-actions]][link-gh-actions]
 
-<!-- cspell:ignore nmap, lsusb, nvim, difft, fblog, procs, deadlinks, systemsetup, setremotelogin, openocd, duti, subfinder -->
+<!-- cspell:ignore nmap, lsusb, nvim, difft, fblog, procs, deadlinks, systemsetup, setremotelogin, openocd, duti, subfinder, ffuf -->
 
 This repository contains an Ansible playbook and supporting scripts to configure macOS for software and hardware development. It covers end-to-end product development–ideation, design, planning, software/hardware development, modeling, manufacturing, and testing.
 
@@ -52,6 +52,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 
 | Tool Type | Command | Description |
 | --- | --- | --- |
+| Cybersecurity | [`ffuf`] | Web fuzzer |
 | Cybersecurity | [`nmap`] | Network port scanner |
 | Cybersecurity | [`openssl`] | Cryptographic functions |
 | Cybersecurity | [`subfinder`] | Passive subdomain discovery |
