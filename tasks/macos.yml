@@ -23,3 +23,34 @@
         executable: /bin/bash
       register: default_terminal_handler_result
       changed_when: "'updated-handler' in default_terminal_handler_result.stdout"
+
+    - name: Disable AirPlay receiver
+      become: true
+      ansible.builtin.shell: |
+        set -euo pipefail
+        current="$(/usr/bin/defaults read com.apple.controlcenter AirplayRecieverEnabled 2>/dev/null || echo 1)"
+        if [ "$current" = "0" ]; then
+          echo "airplay-disabled"
+          exit 0
+        fi
+        /usr/bin/defaults write com.apple.controlcenter AirplayRecieverEnabled -bool false
+        echo "airplay-updated"
+      args:
+        executable: /bin/bash
+      register: airplay_receiver_result
+      changed_when: "'airplay-updated' in airplay_receiver_result.stdout"
+
+    - name: Enable 24-hour time format
+      ansible.builtin.shell: |
+        set -euo pipefail
+        current="$(/usr/bin/defaults read NSGlobalDomain AppleICUForce24HourTime 2>/dev/null || echo 0)"
+        if [ "$current" = "1" ]; then
+          echo "time-format-set"
+          exit 0
+        fi
+        /usr/bin/defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
+        echo "time-format-updated"
+      args:
+        executable: /bin/bash
+      register: time_format_result
+      changed_when: "'time-format-updated' in time_format_result.stdout"

@@ -118,7 +118,7 @@ This playbook includes an opinionated mix of modern and traditional Linux/Unix c
 
 ### macOS Settings
 
-After applications are installed, the playbook configures default applications via [`duti`], setting [iTerm2] as the handler for `.command` scripts by default.
+After applications are installed, the playbook configures a few macOS defaults: [`duti`] assigns [iTerm2] as the handler for `.command` scripts, the built-in AirPlay receiver is disabled for privacy, and the system clock switches to 24-hour time.
 
 ## Configuring a Mac
 
