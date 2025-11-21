@@ -55,18 +55,92 @@
       register: time_format_result
       changed_when: "'time-format-updated' in time_format_result.stdout"
 
-    - name: Enable time zone updates based on location
-      become: true
+    ## This is the default setting
+    # - name: Enable time zone updates based on location
+    #   become: true
+    #   ansible.builtin.shell: |
+    #     set -euo pipefail
+    #     current="$(/usr/bin/defaults read /Library/Preferences/com.apple.timezone.auto Active 2>/dev/null || echo 0)"
+    #     if [ "$current" = "1" ]; then
+    #       echo "timezone-auto-set"
+    #       exit 0
+    #     fi
+    #     /usr/bin/defaults write /Library/Preferences/com.apple.timezone.auto Active -bool true
+    #     echo "timezone-auto-updated"
+    #   args:
+    #     executable: /bin/bash
+    #   register: timezone_auto_result
+    #   changed_when: "'timezone-auto-updated' in timezone_auto_result.stdout"
+
+    - name: Set measurement system to metric
       ansible.builtin.shell: |
         set -euo pipefail
-        current="$(/usr/bin/defaults read /Library/Preferences/com.apple.timezone.auto Active 2>/dev/null || echo 0)"
-        if [ "$current" = "1" ]; then
-          echo "timezone-auto-set"
+        metric_flag="$(/usr/bin/defaults read NSGlobalDomain AppleMetricUnits 2>/dev/null || echo 0)"
+        measurement="$(/usr/bin/defaults read NSGlobalDomain AppleMeasurementUnits 2>/dev/null || echo '')"
+        if [ "$metric_flag" = "1" ] && [ "$measurement" = "Centimeters" ]; then
+          echo "metric-already-set"
           exit 0
         fi
-        /usr/bin/defaults write /Library/Preferences/com.apple.timezone.auto Active -bool true
-        echo "timezone-auto-updated"
+        /usr/bin/defaults write NSGlobalDomain AppleMetricUnits -bool true
+        /usr/bin/defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+        echo "metric-updated"
       args:
         executable: /bin/bash
-      register: timezone_auto_result
-      changed_when: "'timezone-auto-updated' in timezone_auto_result.stdout"
+      register: metric_system_result
+      changed_when: "'metric-updated' in metric_system_result.stdout"
+
+    - name: Set Monday as the first day of the week
+      ansible.builtin.shell: |
+        set -euo pipefail
+        current="$({ /usr/bin/defaults read NSGlobalDomain AppleFirstWeekday 2>/dev/null || true; } | /usr/bin/awk -F'= ' '/gregorian/ {gsub(/;| /,"",$2); print $2}' || echo '')"
+        if [ "$current" = "2" ]; then
+          echo "monday-already-set"
+          exit 0
+        fi
+        /usr/bin/defaults write NSGlobalDomain AppleFirstWeekday -dict gregorian 2
+        echo "monday-updated"
+      args:
+        executable: /bin/bash
+      register: first_weekday_result
+      changed_when: "'monday-updated' in first_weekday_result.stdout"
+
+    - name: Enforce ISO-style date format (YYYY-MM-DD)
+      ansible.builtin.shell: |
+        set -euo pipefail
+        target="yyyy-MM-dd"
+
+        current_alpha=""
+        if output="$(/usr/bin/defaults read NSGlobalDomain AppleICUDateFormatStrings 2>/dev/null)"; then
+          current_alpha="$output"
+        fi
+
+        current_numeric=""
+        if output="$(/usr/bin/defaults read NSGlobalDomain AppleICUNumericDateFormatStrings 2>/dev/null)"; then
+          current_numeric="$output"
+        fi
+
+        needs_update=0
+        for key in 1 2 3 4; do
+          pattern="$key = \"$target\";"
+          if ! printf '%s\n' "$current_alpha" | /usr/bin/grep -F -q "$pattern"; then
+            needs_update=1
+            break
+          fi
+          if ! printf '%s\n' "$current_numeric" | /usr/bin/grep -F -q "$pattern"; then
+            needs_update=1
+            break
+          fi
+        done
+
+        if [ "$needs_update" -eq 0 ]; then
+          echo "date-format-already-set"
+          exit 0
+        fi
+
+        /usr/bin/defaults write NSGlobalDomain AppleICUDateFormatStrings -dict 1 "$target" 2 "$target" 3 "$target" 4 "$target"
+        /usr/bin/defaults write NSGlobalDomain AppleICUNumericDateFormatStrings -dict 1 "$target" 2 "$target" 3 "$target" 4 "$target"
+        echo "date-format-updated"
+      args:
+        executable: /bin/bash
+      register: date_format_result
+      changed_when: "'date-format-updated' in date_format_result.stdout"
