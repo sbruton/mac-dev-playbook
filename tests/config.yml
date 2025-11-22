@@ -2,6 +2,7 @@ cargo_installed_binaries:
   - cargo-update
 
 homebrew_installed_packages:
+  - openssl
   - rustup
 
 homebrew_cask_apps:
