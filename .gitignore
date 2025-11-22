@@ -1,1 +1,8 @@
+# Ansible
+.ansible/
+
+# macOS
 .DS_Store
+
+# Rust
+target/
