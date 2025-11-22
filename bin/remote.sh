@@ -27,10 +27,22 @@ if ! command -v ansible-playbook >/dev/null 2>&1; then
 	exit 1
 fi
 
+if ! command -v ssh >/dev/null 2>&1; then
+	echo "error: ssh is not installed or not on PATH" >&2
+	exit 1
+fi
+
 cd "$REPO_ROOT"
 
 INVENTORY_SPEC="${HOST},"
-ANSIBLE_CMD=(ansible-playbook main.yml -i "$INVENTORY_SPEC" -u "$USER" --ask-become-pass)
+
+ASK_PASS_FLAG=()
+if ! ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new "${USER}@${HOST}" true >/dev/null 2>&1; then
+	echo "info: SSH key authentication failed; enabling password prompt." >&2
+	ASK_PASS_FLAG=(--ask-pass)
+fi
+
+ANSIBLE_CMD=(ansible-playbook main.yml -i "$INVENTORY_SPEC" -u "$USER" --ask-become-pass "${ASK_PASS_FLAG[@]}")
 
 if [[ $# -gt 0 ]]; then
 	ANSIBLE_CMD+=("$@")
