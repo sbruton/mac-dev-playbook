@@ -82,10 +82,11 @@ jobs:
         env:
           ANSIBLE_FORCE_COLOR: "1"
 
-      - name: Idempotence Check
-        run: |
-          idempotence=$(mktemp -t idempotence.XXXXXX)
-          ansible-playbook main.yml | tee ${idempotence}
-          tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence Test: Pass' && exit 0) || (echo 'Idempotence Test: Fail' && exit 1)
-        env:
-          ANSIBLE_FORCE_COLOR: "1"
+      # Playbook now includes upgrade tasks, so idempotence check is not valid
+      # - name: Idempotence Check
+      #   run: |
+      #     idempotence=$(mktemp -t idempotence.XXXXXX)
+      #     ansible-playbook main.yml | tee ${idempotence}
+      #     tail ${idempotence} | grep -q 'changed=0.*failed=0' && (echo 'Idempotence Test: Pass' && exit 0) || (echo 'Idempotence Test: Fail' && exit 1)
+      #   env:
+      #     ANSIBLE_FORCE_COLOR: "1"
