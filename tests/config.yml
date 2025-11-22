@@ -1,5 +1,5 @@
 homebrew_installed_packages:
-  - zsh-completions
+  - rustup
 
 homebrew_cask_apps:
   - firefox@developer-edition
