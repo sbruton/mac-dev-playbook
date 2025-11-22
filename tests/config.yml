@@ -1,3 +1,6 @@
+cargo_installed_binaries:
+  - cargo-update
+
 homebrew_installed_packages:
   - rustup
 
