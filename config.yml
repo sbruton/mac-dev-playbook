@@ -1,4 +1,4 @@
-# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad, duti, subfinder, ffuf, iterm
+# cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad, duti, subfinder, ffuf, iterm, picotool
 
 cargo_installed_binaries:
   - atuin
@@ -55,6 +55,7 @@ homebrew_installed_packages:
   - nmap
   - open-ocd
   - openssl
+  - picotool
   - rustup
   - subfinder
   - tmux
