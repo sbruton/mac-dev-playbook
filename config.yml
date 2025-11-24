@@ -42,9 +42,11 @@ homebrew_installed_packages:
   - cirruslabs/cli/tart
   - duti
   - ffuf
+  - gcc
   - gh
   - git
   - htop
+  - lld
   - llvm
   - lsusb
   - neovim
@@ -74,6 +76,7 @@ homebrew_cask_apps:
   - font-jetbrains-mono-nerd-font
   - iterm2
   - kicad
+  - little-snitch
   - omnigraffle
   - openscad
   - orcaslicer
