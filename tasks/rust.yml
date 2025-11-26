@@ -64,8 +64,9 @@
       vars:
         cargo_package_name: "{{ (item.name | default(item)) if item is mapping else item }}"
         cargo_package_locked: "{{ (item.locked | default(false)) if item is mapping else false }}"
+        cargo_package_features: "{{ (item.features | default('')) if item is mapping else '' }}"
         cargo_package_pattern: "{{ '(?m)^' ~ cargo_package_name ~ ' v' }}"
-      ansible.builtin.command: "cargo install{{ ' --locked' if cargo_package_locked else '' }} {{ cargo_package_name }}"
+      ansible.builtin.command: "cargo install{{ ' --locked' if cargo_package_locked else '' }} -F \"{{ cargo_package_features }}\" {{ cargo_package_name }}"
       loop: "{{ cargo_installed_binaries | default([]) }}"
       loop_control:
         label: "{{ cargo_package_name }}"

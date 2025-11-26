@@ -2,6 +2,7 @@
 
 cargo_installed_binaries:
   - atuin
+  - { name: bacon, features: "clipboard sound" }
   - bat
   - cargo-audit
   - cargo-auditable
@@ -16,6 +17,7 @@ cargo_installed_binaries:
   - cargo-expand
   - cargo-generate
   - cargo-next
+  - cargo-nextest
   - cargo-rpm
   - cargo-show-asm
   - cargo-tarpaulin
