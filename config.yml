@@ -76,6 +76,7 @@ homebrew_cask_apps:
   - docker
   - firefox@developer-edition
   - font-jetbrains-mono-nerd-font
+  - gimp
   - iterm2
   - kicad
   - little-snitch
