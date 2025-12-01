@@ -31,6 +31,7 @@ cargo_installed_binaries:
   - fd-find
   - just
   - mdbook
+  - probe-rs-tools
   - procs
   - ripgrep
   - twiggy
@@ -79,6 +80,7 @@ homebrew_cask_apps:
   - font-jetbrains-mono-nerd-font
   - gimp
   - iterm2
+  - itermai
   - kicad
   - little-snitch
   - omnigraffle
