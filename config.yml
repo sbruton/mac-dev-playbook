@@ -1,6 +1,7 @@
 # cspell:ignore cirruslabs, deadlinks, difftastic, fblog, procs, lsusb, nmap, rustup, messense, appdir, openscad, duti, subfinder, ffuf, iterm, picotool
 
 cargo_installed_binaries:
+  - alacritty
   - atuin
   - { name: bacon, features: "clipboard sound" }
   - bat
@@ -31,9 +32,11 @@ cargo_installed_binaries:
   - fd-find
   - just
   - mdbook
+  - nu
   - probe-rs-tools
   - procs
   - ripgrep
+  - starship
   - twiggy
   - { name: watchexec-cli, locked: true }
 
