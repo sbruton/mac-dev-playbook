@@ -46,6 +46,7 @@ homebrew_installed_packages:
   - ansible-lint
   - asciinema
   - cirruslabs/cli/tart
+  - clamav
   - duti
   - ffuf
   - gcc
