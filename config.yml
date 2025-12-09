@@ -16,6 +16,7 @@ cargo_installed_binaries:
   - cargo-diet
   - cargo-edit
   - cargo-expand
+  - cargo-fuzz
   - cargo-generate
   - cargo-next
   - cargo-nextest
@@ -45,6 +46,7 @@ cargo_installed_binaries:
 homebrew_upgrade_all_packages: true
 
 homebrew_installed_packages:
+  - aarch64-unknown-linux-gnu
   - ansible-lint
   - asciinema
   - cirruslabs/cli/tart
@@ -78,6 +80,7 @@ homebrew_installed_packages:
 
 homebrew_taps:
   - { name: cirruslabs/cli, url: 'https://github.com/cirruslabs/homebrew-cli' }
+  - { name: messense/macos-cross-toolchains, url: 'https://github.com/messense/macos-cross-toolchains' }
 
 homebrew_cask_appdir: /Applications
 
