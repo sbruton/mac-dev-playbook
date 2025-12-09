@@ -90,6 +90,7 @@ homebrew_cask_apps:
   - autodesk-fusion
   - blender
   - brave-browser
+  - cyberduck
   - discord
   - docker
   - firefox@developer-edition
