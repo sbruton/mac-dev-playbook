@@ -27,12 +27,14 @@ cargo_installed_binaries:
   - dioxus-cli
   - du-dust
   - elf2uf2-rs
+  - espup
   - eza
   - fblog
   - fd-find
   - just
   - mdbook
   - nu
+  - nu_plugin_formats
   - probe-rs-tools
   - procs
   - ripgrep
@@ -47,7 +49,12 @@ homebrew_installed_packages:
   - asciinema
   - cirruslabs/cli/tart
   - clamav
+  - cmake
+  - coreutils
+  - crosstool-ng
+  - dfu-util
   - duti
+  - esptool
   - ffuf
   - gcc
   - gh
@@ -57,6 +64,7 @@ homebrew_installed_packages:
   - llvm
   - lsusb
   - neovim
+  - ninja
   - nmap
   - open-ocd
   - openssl
@@ -82,6 +90,7 @@ homebrew_cask_apps:
   - discord
   - docker
   - firefox@developer-edition
+  - font-allerta
   - font-jetbrains-mono-nerd-font
   - gimp
   - iterm2
@@ -93,6 +102,7 @@ homebrew_cask_apps:
   - orcaslicer
   - postman
   - protonvpn
+  - raspberry-pi-imager
   - slack
   - visual-studio-code
   - wireshark
