@@ -58,6 +58,7 @@ homebrew_installed_packages:
   - duti
   - esptool
   - ffuf
+  - fnm
   - gcc
   - gh
   - git
@@ -68,9 +69,11 @@ homebrew_installed_packages:
   - neovim
   - ninja
   - nmap
+  - nvm
   - open-ocd
   - openssl
   - picotool
+  - pnpm
   - rustup
   - subfinder
   - tmux
