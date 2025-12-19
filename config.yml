@@ -55,6 +55,7 @@ homebrew_installed_packages:
   - coreutils
   - crosstool-ng
   - dfu-util
+  - docker-compose
   - duti
   - esptool
   - ffuf
@@ -93,6 +94,7 @@ homebrew_cask_apps:
   - autodesk-fusion
   - blender
   - brave-browser
+  - claude-code
   - cyberduck
   - discord
   - docker
