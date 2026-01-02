@@ -113,6 +113,7 @@ homebrew_cask_apps:
   - protonvpn
   - raspberry-pi-imager
   - slack
+  - thunderbird
   - visual-studio-code
   - wireshark
   - zoom
